@@ -1,0 +1,38 @@
+<section class="Courses">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center text-center flex-column mx-auto"
+        data-aos="fade-up">
+        <h1>Blogs & Insights</h1>
+        <p>Guiding young minds with engaging stories, expert advice, and playful learning ideas.</p>
+      </div>
+      <div class="row Courses_Slider" data-aos="fade-up">
+
+
+        <% blogs.forEach(item => { %>
+        <div class="col-lg-4" onclick="window.location.href='/blog/<%= item.seoDetails.slug %>';">
+          <div class="d-flex flex-column position-relative">
+            <figure>
+                <img 
+                style="padding-top: 0; width:100%" 
+                src="<%= process.env.S3_BASE_URL + item.banner.image %>" 
+                alt="blog_banner">
+            </figure>
+            <div class="d-flex flex-column text-center">
+              <h4 style="padding-bottom:20px"><%= item.title %></h4>
+              <%- item.description.slice(0,70).concat("...") %>
+              <div style="padding-top: 20px;">
+                <a href="/blog/<%= item.seoDetails.slug %>" class="hover3">
+                  Explore More<i class="fa fa-arrow-right-long"></i>
+                </a>
+              </div>
+            </div>
+            <div class="position-absolute"></div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+ <!--====== NEWS 2 PART START ======-->
+    
+    

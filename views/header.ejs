@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from html-templates.evonicmedia.com/kinderdot/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Mar 2025 10:24:33 GMT -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <!-- Meta description (Important for SEO) -->
+    <meta name="description" content="<%= seoDetails?.metaDescription || '' %>">
+
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="<%= seoDetails?.title || '' %>">
+    <meta property="og:description" content="<%= seoDetails?.metaDescription || '' %>">
+    <meta property="og:image" content="<%= seoDetails?.metaImage || '' %>">
+    <meta name="author" content="Karyasiddhi">
+    <meta property="og:type" content="website">
+
+    <meta name="keywords" content="<%= seoDetails?.keywords || '' %>"> 
+    <link rel="canonical" href="<%= seoDetails?.canonical || '' %>" />
+
+
+    <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<%= seoDetails?.title || '' %>">
+        <meta name="twitter:description" content="<%= seoDetails?.metaDescription || '' %>">
+        <meta name="twitter:image" content="<%= seoDetails?.metaImage || '' %>">
+        <meta name="twitter:url" content="<%= seoDetails.canonical || ''  %>">
+    <!--====== Title ======-->
+    <title><%= seoDetails?.title %></title>
+    <link rel="icon" href="/assets/images/fevicon.png" type="image/x-icon">
+  <!-- faremwork of css -->
+  <link rel="stylesheet" href="/assets/css/bootstrap-lib/bootstrap.min.css" />
+  <!-- style sheet of css -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <!-- Responsive sheet of css -->
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+  <!-- fonts awsome icon link  -->
+  <link rel="stylesheet" href="/assets/font-awesome-lib/icon/font-awesome.min.css" />
+  <!-- slick-slider link css -->
+  <link rel="stylesheet" href="/assets/css/slick.min.css" />
+
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+    <!-- ======== 1.1. Header section ======== -->
+    <header>
+      <nav class="navbar navbar-expand-lg container py-3" data-aos="fade-down">
+        <div class="container-fluid">
+          <!-- site logo -->
+          <a class="nav-logo p-0"  href="/">
+            <figure><img style="width: 190px !important;" src="/assets/images/logo.webp" alt="logo" /></figure>
+          </a>
+          <!-- navigation button  -->
+          <div class="d-flex gap-md-3">
+           
+            <!-- navigation bar manu  -->
+            <div class="d-flex justify-content-end gap-xl-4 gap-lg-3">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul
+                  class="navbar-nav d-flex justify-content-center align-items-center gap-lg-3 gap-md-2 gap-sm-2 gap-2 mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                  </li>
+                  <li class="dropdown">
+                    <a class="nav-link d-flex align-item-center gap-1" href="javascript:void(0);">Alphabetz World<i
+                        class="fa-sharp fa-solid fa-sort-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/our-curriculum">Our Curriculum</a></li>
+                      <li><a class="dropdown-item" href="/Our-programmes">Our Programmes</a></li>
+                      <li>
+                        <a class="dropdown-item" href="/a-day-at-alphabetz">A Day at Alphabetz</a>
+                      </li>
+                      <li><a class="dropdown-item" href="/alphabetz-commits">Alphabetz commits</a></li>
+                      <li><a class="dropdown-item" href="/smart-speak">Smart Speak</a></li>
+                    
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blogs">Blogs</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/gallery">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <a href="/admission" class="hover1" id="getStartedAnchor">Admission</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!--===== aside navigation slidebar =====-->
+      <aside>
+        <div id="mySidenav" class="right-sidbar">
+          <div class="side-nav-logo d-flex justify-content-between align-items-center ps-2 pe-1 nav-logo">
+            <figure class="navbar-brand">
+              <a href="/">
+                <img src="assets/images/Logo.svg" alt="Logo" />
+              </a>
+            </figure>
+           
+          </div>
+          <ul class="pt-4">
+            <li class="nav-item active">
+              <a aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/courses">Alphabetz World</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blogs">Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/gallery">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+          </ul>
+        </div>
+      </aside>
+    </header>

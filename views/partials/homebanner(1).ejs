@@ -1,0 +1,104 @@
+<!-- <% if (popupbanners.length > 0) { %>
+    <div id="popback" onclick="closepopup()"></div>
+    <div id="popup-banner">
+        <button id="close-popup">&times;</button>
+  
+       
+        <div class="desktop-popup-banner">
+            <div class="swiper-container desktop-banner" id="desktop-popup-banners">
+                <div class="swiper-wrapper">
+                    <% popupbanners.forEach(slide => { %>
+                        <div class="swiper-slide bgimg">
+                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.webView %>" alt="karyasiddhi_Popupbanner"/>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+  
+        <div class="mobile-popup-banner">
+            <div class="swiper-container mobile-banner" id="mobile-popup-banners">
+                <div class="swiper-wrapper">
+                    <% popupbanners.forEach(slide => { %>
+                        <div class="swiper-slide bgimg">
+                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.mobileView %>" alt="karyasiddhi_Popupbanner"/>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+  <% } %> -->
+
+ 
+
+    
+<!--    
+      
+    <% banners.forEach(slide => { %>
+         -->
+          <!-- <% }) %> --> 
+        <section class="Hero">
+            <div class="container">
+              <div class="d-flex justify-content-center align-items-center text-center flex-column" data-aos="fade-up">
+                <h1>
+                  Welcome to Alphabetz Preschool Dongargarh
+                  </h1>
+                <p>Nurturing creativity, life skills, and playful learning in a supportive environment, guided by dedicated teachers for your child’s growth and development.
+                </p>
+                <div>
+                  <a href="Programs.html" class="hover1">Enroll now</a>
+                </div>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-center gap-lg-5 pt-lg-5 position-relative flex-md-row flex-column">
+                <figure>
+                  <img class="position-absolute rotate-animation" src="assets/images/index/plane.webp" alt="plane">
+                </figure>
+                <div>
+                  <div class="p-0"></div>
+                  <figure>
+                    <img class="position-absolute bounce-animation" src="assets/images/index/pencils.webp" alt="pencils">
+                  </figure>
+                </div>
+                <div class="d-flex flex-column gap-0">
+                  <div class="d-flex flex-column align-items-center gap-2">
+                    <h2><span class="number" data-final-value="7.5"></span>Learn
+                      
+                      </h2>
+                    <p>Smart Methods, Easy Learning</p>
+                  </div>
+                  <hr>
+                  <div class="d-flex flex-column align-items-center gap-2">
+                    <h2><span class="number" data-final-value="50"></span>Fun</h2>
+                    <p>Where play and education <br> go hand in hand.</p>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-md-end justify-content-center gap-lg-3 gap-md-2 gap-3 position-relative flex-md-row flex-column mt-md-0 mt-4">
+                  <figure class="m-0" data-aos="zoom-in-up">
+                    <img class="w-100" src="assets/images/index/Hero_img.webp" alt="HeroImg">
+                  </figure>
+                  <div class="position-relative" data-aos="zoom-in-up">
+                    <figure>
+                      <img class="rounded-circle w-100" src="assets/images/index/Hero_img2.webp" alt="HeroImg2">
+                    </figure>
+                  </div>
+                  <div>
+                    <div class="p-0 z-1"></div>
+                    <figure>
+                      <img class="position-absolute bounce-slow" src="assets/images/index/bulb.webp" alt="bulb">
+                    </figure>
+                  </div>
+                  <figure>
+                    <img class="position-absolute rotate-animation" src="assets/images/index/baloon.webp" alt="Baloon">
+                  </figure>
+                </div>
+              </div>
+              
+            </div>
+        </section>
+
+   
+    
+

@@ -1,0 +1,418 @@
+<%- include('header'), {seoDetails} %>
+
+ <!--====== PAGE TITLE PART START ======-->
+
+<style>
+  .gallery-container {
+    display: grid;
+    gap: 10px;
+    margin: 25px 0px;
+    grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+    grid-auto-rows: auto; /* Let the row height auto-adjust based on content */
+  }
+  
+  .gallery-item {
+    position: relative;
+    width: 100%; /* Ensure images take full width of the grid cell */
+    padding-top: 56%; /* Aspect ratio 16:9 (adjust if you need a different aspect ratio) */
+    overflow: hidden;
+    transition: all 0.3s ease; /* Smooth transition for resizing */
+  }
+  
+  .gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image fills the square */
+  }
+  
+  /* This class ensures the last image (if odd) spans 2 columns without adding extra height */
+  .gallery-item.grid-span-2 {
+    grid-column: span 2; /* Span across 2 columns */
+    padding-top: 54%; /* Ensure aspect ratio is maintained */
+  }
+
+.blog-description p, .description-block p{
+  font-size: 16px;
+  color: #646464;
+  text-align: justify;
+  font-weight: 400;
+  line-height: 28px;
+}
+  
+</style>
+
+<!--====== PAGE TITLE PART ENDS ======-->
+
+<!--====== BLOG DETAILS PART ENDS ======-->
+
+
+<section class="blog-details" style="padding-bottom: 0; margin-top:80px">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="blog-details__main">
+                    <div class="blog-details__image" style="margin: 0px 0px 25px 0px;">
+                      <% 
+                      // Function to convert a YouTube URL (watch or short form) into an embeddable URL
+                      function convertToEmbedUrl(url) {
+                          let videoId = "";
+                          if (url.includes("youtu.be")) {
+                              // Handle short URL format (e.g., https://youtu.be/Tjxx80uYyUQ)
+                              videoId = url.split("youtu.be/")[1]?.split("?")[0];
+                          } else if (url.includes("youtube.com/watch")) {
+                              // Handle full URL format (e.g., https://www.youtube.com/watch?v=Tjxx80uYyUQ)
+                              videoId = url.split("v=")[1]?.split("&")[0];
+                          }
+                          return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+                      }
+                      %>
+                      
+                      <% if (blogfull?.banner?.bannerType === "VIDEO" && blogfull?.banner?.video && blogfull?.banner?.video !== "") { %>
+                        <!-- Render video if the banner type is VIDEO and video URL exists -->
+                        <iframe 
+                            width="100%" 
+                            height="433" 
+                            src="<%= convertToEmbedUrl(blogfull.banner.video) %>" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    <% } else if (blogfull?.banner?.bannerType === "IMAGE" && blogfull?.banner?.image) { %>
+                        <!-- Render image if the banner type is IMAGE and image URL exists -->
+                        <img 
+                            style="padding-top: 0; width:100%; border-radius:22px" 
+                            src="<%= process.env.S3_BASE_URL + blogfull.banner.image %>" 
+                            alt="blog_banner">
+                    <% } %>
+                    
+                        
+                    </div><!-- /.blog-details__image -->
+                    <div class="blog-details__content">
+                        <!-- <div class="blog-one__meta">
+                            <a href="#"><i class="fa fa-user-o"></i> by admin</a>
+                            <a href="#"><i class="fa fa-comments-o"></i> 2 comments</a>
+                        </div> -->
+                        <div style="margin-bottom: 35px; padding-bottom:35px; border-bottom:1px solid #b6b5b5; color:#1F0B45">
+                        <h3 style="margin: 0px 0px 8px 0px; font-size:42px;"> <%= blogfull.title %></h3>
+                        <h4 style="margin: 0px 0px 8px 0px; font-size:20px; font-weight:500"><%= blogfull.subTitle %></h4>
+                        <p style="color: #e33d5c; display:flex; align-items:center"><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span style="margin-right: 35px;">Blog</span><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span><%= blogfull.postDate %></span></p>
+</div>
+
+                        <div class="blog-description"><%- blogfull.description.replace(/\n/g, '<br>') %></div>
+             <div class="description-block">
+              <% blogfull.multipleDescriptions.forEach(function(item) { %>
+                <div class="single-description">
+                  <div><%- item.description %>
+                  </div>
+                  
+                  <% if (item.singleImage && item.singleImage.image) { %>
+                    <!-- Display Single Image -->
+                    <div class="single-image-container" style="margin: 25px 0;">
+                      <img src="<%= process.env.S3_BASE_URL + item.singleImage.image %>" alt="Single Image" style="border-radius:20px; width:100%" class="single-image">
+                    </div>
+                  <% } %>
+              
+                  
+                  <% 
+                  // Function to convert a YouTube URL (watch or short form) into an embeddable URL
+                  function convertToEmbedUrl(url) {
+                      let videoId = "";
+                      if (url.includes("youtu.be")) {
+                          // Handle short URL format (e.g., https://youtu.be/Tjxx80uYyUQ)
+                          videoId = url.split("youtu.be/")[1]?.split("?")[0];
+                      } else if (url.includes("youtube.com/watch")) {
+                          // Handle full URL format (e.g., https://www.youtube.com/watch?v=Tjxx80uYyUQ)
+                          videoId = url.split("v=")[1]?.split("&")[0];
+                      }
+                      return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+                  }
+                  %>
+                  
+                  <% if (item?.youtube && item?.youtube !== "") { 
+                      const embedUrl = convertToEmbedUrl(item.youtube); 
+                      if (embedUrl) { %>
+                          <iframe 
+                          width="100%" 
+                          height="433"
+                          style="border-radius: 20px; margin:25px 0" 
+                              src="<%= embedUrl %>" 
+                              title="YouTube video player" 
+                              frameborder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                              referrerpolicy="strict-origin-when-cross-origin" 
+                              allowfullscreen>
+                          </iframe>
+                      <% } else { %>
+                          <p>Invalid YouTube URL provided.</p>
+                      <% } 
+                  } %>
+                  
+
+                  <% if (item.multipleImages && item.multipleImages.length > 0) { %>
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <% item.multipleImages.forEach(function(image, index) { %>
+                          <div class="swiper-slide">
+                            <img 
+                              src="<%= process.env.S3_BASE_URL + image %>" 
+                              alt="Product Image <%= index + 1 %>"
+                              class="gallery-image"
+                            />
+                          </div>
+                        <% }); %>
+                      </div>
+                  
+                      <!-- Navigation Controls -->
+                      <div class="swiper-navigation" style="z-index: 10;">
+                        <button class="custom-prev">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-icon">
+                            <path d="M15.75 19.5L8.25 12l7.5-7.5" />
+                          </svg>
+                        </button>
+                        <span class="slide-counter">
+                          <span id="current-slide">1</span> of <%= item.multipleImages.length %>
+                        </span>
+                        <button class="custom-next">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-icon">
+                            <path d="M8.25 4.5L15.75 12l-7.5 7.5" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  <% } %>
+                  
+                  
+                  <% if (blogfull.multipleDescriptions.youtube) { %>
+                    <div class="youtube-container" style="border-radius:20px">
+                      <iframe 
+                        width="100%" 
+                        height="435" 
+                        style="border-radius:20px; margin:25px 0"
+                        src="<%= blogfull.multipleDescriptions.youtube.replace('watch?v=', 'embed/') %>" 
+                        title="YouTube video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                      </iframe>
+                    </div>
+                  <% } %>
+                  
+              
+                  <% if (item.button && item.button.hyperLink && item.button.title) { %>
+                    <div class="button">
+                    <a style="height: 55px; margin:25px 0" href="<%= item.button.hyperLink %>" class="hover1"><%= item.button.title %></a>
+                  </div>
+                  <% } %> <!-- Only display the button if both hyperLink and title exist -->
+              
+                </div>
+              <% }); %>
+              
+          </div>
+                    </div><!-- /.blog-details__content -->
+                    <div class="blog-details__meta">
+                        
+                        <div class="blog-details__share locations">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div><!-- /.blog-details__share -->
+                    </div><!-- /.blog-details__meta -->
+                </div><!-- /.blog-details__main -->
+
+
+               
+                 
+         
+                  
+              
+
+            </div><!-- /.col-lg-8 -->
+
+
+
+
+             <div class="col-lg-4 col-md-6 col-sm-7 sidebar-fix" style="position: sticky; align-self:start; top:100px">
+                    <div class="sidebar">
+                        <div class="sidebar__single sidebar__post" style="background-color: rgb(249, 238, 223);  border-radius:18px; padding:30px; padding-left:35px">
+                            <h3 class="sidebar__title" style="margin-bottom: 20px; color:#1F0B45; padding-bottom:14px; border-bottom:2px solid #1f0b4596">More Blogs</h3><!-- /.sidebar__title -->
+                            <div class="sidebar__post-wrap">
+                                
+                              <% blogs.forEach(item => { %>
+                                <div class="sidebar__post__single item explore" style="display: flex; gap:20px; align-items:center">
+                                    <div class="sidebar__post-image">
+                                        <div class="inner-block"><img style="height: 65px; width:65px; object-fit:cover;" src="<%= process.env.S3_BASE_URL + item.banner.image %>" alt="blog_bannerimage"></div>
+                                        <!-- /.inner-block -->
+                                    </div><!-- /.sidebar__post-image -->
+                                    <div class="sidebar__post-content">
+                                        <h4 style="font-size: 16px; line-height:20px" class="sidebar__post-title"><a style="font-size: 16px; color:#1F0B45" href="/blog/<%= item.seoDetails.slug %>"><%= item.title %></a></h4>
+                                        <h4 style="font-size: 16px; line-height:20px; font-weight:400" class="sidebar__post-title"><a style="font-size: 14px;font-weight:400; color:#1F0B45"  href="/blog/<%= item.seoDetails.slug %>"><%= item.subTitle %></a></h6>
+                                        <!-- /.sidebar__post-title -->
+                                    </div><!-- /.sidebar__post-content -->
+                                </div ><!-- /.sidebar__post__single -->
+                                <% }) %>  
+                            </div><!-- /.sidebar__post-wrap -->
+                        </div><!-- /.sidebar__single -->
+
+
+
+                        <div class="sidebar__single sidebar__tags" style="background-color: rgb(249, 238, 223); border-radius:18px; margin-top:25px; padding:30px; padding-left:35px">
+                            <h3 class="sidebar__title" style="margin-bottom: 20px; color:#1F0B45; padding-bottom:14px; border-bottom:2px solid #1f0b4596">Tags</h3><!-- /.sidebar__title -->
+                            <ul class="sidebar__tags-list">
+                               
+                              <% if (blogfull.seoDetails.tags && blogfull.seoDetails.tags.length > 0) { %>
+                                <% blogfull.seoDetails.tags.forEach((tag) => { %>
+                                  <li style="display: inline-block; ">
+                                    <a class="hover1" style="line-height: 14px; margin:3px" href="javascript:void(0)"><%= tag %></a>
+                                  </li>
+                                <% }) %>
+                              <% } %>
+                              
+                              
+                            </ul><!-- /.sidebar__category-list -->
+                        </div><!-- /.sidebar__single -->
+
+
+                    </div><!-- /.sidebar -->
+                </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.blog-details -->
+
+
+<%- include('./partials/enquire.ejs') %>
+<!--====== BLOG DETAILSSTART ======-->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const swiper = new Swiper(".swiper-container", {
+      loop: true,
+      navigation: {
+        nextEl: ".custom-next",
+        prevEl: ".custom-prev",
+      },
+      
+      on: {
+        slideChange: function () {
+          document.getElementById("current-slide").innerText = this.realIndex + 1;
+        },
+      },
+    });
+  });
+  
+</script>
+
+<!-- <script>
+ 
+  document.querySelectorAll('.read-more-link').forEach(button => {
+    button.addEventListener('click', function toggleReview() {
+      const reviewText = this.closest('.testimonial-text');
+      const fullReview = reviewText.getAttribute('data-full-review');
+      const shortReview = fullReview.slice(0, 100) + '...';
+  
+      if (this.textContent === 'Read More') {
+        // Replace the content and reattach the event listener
+        reviewText.innerHTML = fullReview + ' <button class="read-more-link">Read Less</button>';
+      } else {
+        // Replace the content and reattach the event listener
+        reviewText.innerHTML = shortReview + ' <button class="read-more-link">Read More</button>';
+      }
+  
+      // Reattach the event listener to the new button
+      document.querySelectorAll('.read-more-link').forEach(button => {
+        button.addEventListener('click', toggleReview);
+      });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    function updateGridLayout() {
+      const galleryContainers = document.querySelectorAll('.gallery-container'); // Select all gallery containers
+      
+      galleryContainers.forEach(galleryContainer => {
+        const galleryItems = galleryContainer.querySelectorAll('.gallery-item');
+        
+        // Apply grid layout with 2 columns per row
+        galleryContainer.style.display = 'grid';
+        galleryContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        galleryContainer.style.gap = '10px'; // Space between images
+        galleryContainer.style.gridAutoRows = 'auto'; // Let rows adjust height based on content
+  
+        // Handle the last image if the total count is odd
+        const totalImages = galleryItems.length;
+        if (totalImages % 2 !== 0) {
+          // Last image takes full width if odd number of images
+          galleryItems[totalImages - 1].classList.add('grid-span-2');
+        } else {
+          // Ensure no extra spanning for even images
+          galleryItems[totalImages - 1].classList.remove('grid-span-2');
+        }
+      });
+    }
+  
+    // Update the grid layout on load and resize
+    updateGridLayout();
+    window.addEventListener('resize', updateGridLayout);
+  });
+  
+  </script> -->
+  
+  <style>
+    .swiper-container {
+      position: relative;
+      
+      max-height: 600px;
+      margin: 25px auto;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    
+    .swiper-navigation {
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+    
+    .custom-prev, .custom-next {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+    
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+    
+    .slide-counter {
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+    
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<%- include('footer') %>

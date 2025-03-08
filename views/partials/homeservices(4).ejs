@@ -1,0 +1,136 @@
+<style>
+  .Courses_Slider {
+    position: relative;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+
+  .swiper-slide {
+    flex-shrink: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    width: 35px;
+    height: 35px;
+    background: #E33d5c;
+    border-radius: 56%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 56%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+  }
+  .Courses_Slider p{
+    padding: 20px 0;
+  }
+  .Courses_Slider h4{
+    font-size: 28px;
+  }
+  .swiper-button-prev { left: -65px; }
+  .swiper-button-next { right: -65px; }
+
+  .swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 20px;
+    color: #ffffff;
+  }
+  @media (max-width:1150px) {
+    .swiper-button-prev ,.swiper-button-next{
+      display: none;
+    }
+  }
+  
+</style>
+
+<section class="Courses">
+  <div class="container" style="position:relative">
+    <div class="d-flex justify-content-center align-items-center text-center flex-column mx-auto" data-aos="fade-up">
+      <h1>Our Courses</h1>
+      <p>Nurturing Young Minds with Tailored Learning Programs for Every Age Group</p>
+    </div>
+
+    <div class="Courses_Slider swiper-container" data-aos="fade-up">
+      <div class="swiper-wrapper" style="display: flex;">
+        <div class="swiper-slide" >
+          <div class="d-flex flex-column position-relative">
+            <figure><img class="w-100" src="assets/images/slider/courses_1.webp" alt="courses_1"></figure>
+            <div class="d-flex flex-column text-center">
+              <h4>Playgroup (Age 1.5-3)</h4>
+              <p>Early exploration through play-based learning.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="d-flex flex-column position-relative">
+            <figure><img class="w-100" src="assets/images/slider/courses_2.webp" alt="courses_2"></figure>
+            <div class="d-flex flex-column text-center">
+              <h4>Nursery (Age 3-4)</h4>
+              <p>Building foundational skills through creativity and fun activities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="d-flex flex-column position-relative">
+            <figure><img class="w-100" src="assets/images/slider/courses_3.webp" alt="courses_3"></figure>
+            <div class="d-flex flex-column text-center">
+              <h4>Jr. KG (Age 4-5)</h4>
+              <p>Developing social, cognitive, and motor skills for the next stage.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="d-flex flex-column position-relative">
+            <figure><img class="w-100" src="assets/images/slider/courses_2.webp" alt="courses_2"></figure>
+            <div class="d-flex flex-column text-center">
+              <h4>Sr. KG (Age 5-6)</h4>
+              <p>Preparing young learners for formal education with a focus on independence and critical thinking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    <!-- Navigation Buttons -->
+    <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+    <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+  </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('.Courses_Slider', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    }
+  });
+</script>

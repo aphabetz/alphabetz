@@ -1,0 +1,70 @@
+<!-- Amazing Moments Section -->
+<div class="Courses_Choice_bg" style="padding-top: 75px;">
+  <section class="Moments">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center flex-column mx-auto text-center"
+        data-aos="fade-up">
+        <h1>Amazing Moments</h1>
+        <p>A Visual Celebration of Fun, Creativity, and Growth at Alphabetz</p>
+      </div>
+
+      <!-- Asymmetrical Grid Layout -->
+      <div class="gallery-grid">
+        <% latestImages.forEach((image, index) => { %>
+          <div class="gallery-item">
+            <img src="<%= image.url %>" alt="<%= image.title %>">
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center" data-aos="fade-up">
+        <a href="/gallery" class="hover4">View More</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CSS Styling -->
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-template-rows: auto;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  /* Asymmetrical Layout */
+  .gallery-item:nth-child(1) { grid-row: span 3; }
+  .gallery-item:nth-child(2) { grid-column: span 1; }
+  .gallery-item:nth-child(3) { grid-row: span 3; }
+  .gallery-item:nth-child(4) { grid-row: span 2; }
+ 
+</style>
+
+<!-- JavaScript to Adjust Layout Dynamically -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let items = document.querySelectorAll(".gallery-item");
+    
+    if (items.length >= 4) {
+      items[0].style.gridRow = "span 3";
+      items[1].style.gridColumn = "span 1";
+      items[2].style.gridRow = "span 3";
+      items[3].style.gridRow = "span 2";
+    }
+  });
+</script>

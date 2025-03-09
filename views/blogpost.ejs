@@ -158,11 +158,13 @@
                       <div class="swiper-wrapper">
                         <% item.multipleImages.forEach(function(image, index) { %>
                           <div class="swiper-slide">
+                            <a class="image-popup" href="<%= process.env.S3_BASE_URL + image %>">
                             <img 
                               src="<%= process.env.S3_BASE_URL + image %>" 
-                              alt="Product Image <%= index + 1 %>"
+                              alt=" Image <%= index + 1 %>"
                               class="gallery-image"
                             />
+                            </a>
                           </div>
                         <% }); %>
                       </div>

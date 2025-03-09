@@ -46,22 +46,22 @@
 <body>
 
   <div class="site-wrapper">
-    <!-- ======== 1.1. Header section ======== -->
     <header>
       <nav class="navbar navbar-expand-lg container py-3" data-aos="fade-down">
         <div class="container-fluid">
           <!-- site logo -->
-          <a class="nav-logo p-0"  href="/">
+          <a class="nav-logo p-0" href="/">
             <figure><img style="width: 190px !important;" src="/assets/images/logo.webp" alt="logo" /></figure>
           </a>
           <!-- navigation button  -->
           <div class="d-flex gap-md-3">
-           
+            <button class="open-aside" onclick="open_aside()" type="button">
+              <i class="fa-solid fa-bars"></i>
+            </button>
             <!-- navigation bar manu  -->
             <div class="d-flex justify-content-end gap-xl-4 gap-lg-3">
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul
-                  class="navbar-nav d-flex justify-content-center align-items-center gap-lg-3 gap-md-2 gap-sm-2 gap-2 mb-2 mb-lg-0">
+                <ul class="navbar-nav d-flex justify-content-center align-items-center gap-lg-3 gap-md-2 gap-sm-2 gap-2 mb-2 mb-lg-0">
                   <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
                   </li>
@@ -69,17 +69,13 @@
                     <a class="nav-link" href="/about">About</a>
                   </li>
                   <li class="dropdown">
-                    <a class="nav-link d-flex align-item-center gap-1" href="#">Alphabetz World<i
-                        class="fa-sharp fa-solid fa-sort-down"></i></a>
+                    <a class="nav-link d-flex align-item-center gap-1" href="#">Alphabetz World<i class="fa-sharp fa-solid fa-sort-down"></i></a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/our-curriculum">Our Curriculum</a></li>
                       <li><a class="dropdown-item" href="/Our-programmes">Our Programmes</a></li>
-                      <li>
-                        <a class="dropdown-item" href="/a-day-at-alphabetz">A Day at Alphabetz</a>
-                      </li>
+                      <li><a class="dropdown-item" href="/a-day-at-alphabetz">A Day at Alphabetz</a></li>
                       <li><a class="dropdown-item" href="/alphabetz-commits">Alphabetz commits</a></li>
                       <li><a class="dropdown-item" href="/smart-speak">Smart Speak</a></li>
-                    
                     </ul>
                   </li>
                   <li class="nav-item">
@@ -94,46 +90,104 @@
                 </ul>
               </div>
               <div>
-                <a href="/admission" class="hover1" id="getStartedAnchor">Admission</a>
+                <a href="tel:8889898805" class="hover1" id="getStartedAnchor"><i class="fa fa-phone" style="padding-right: 0.5rem;"></i> +91 88898 98805</a>
               </div>
             </div>
           </div>
         </div>
       </nav>
+      <a class="side-button" href="/admission" >
+        Apply for Admission
+      </a>
       <!--===== aside navigation slidebar =====-->
       <aside>
         <div id="mySidenav" class="right-sidbar">
           <div class="side-nav-logo d-flex justify-content-between align-items-center ps-2 pe-1 nav-logo">
             <figure class="navbar-brand">
               <a href="/">
-                <img src="assets/images/Logo.svg" alt="Logo" />
+                <img src="assets/images/logo.webp" alt="Logo" />
               </a>
             </figure>
-           
+            <button class="close-aside fa-solid fa-xmark" onclick="close_aside()"></button>
           </div>
           <ul class="pt-4">
-            <li class="nav-item active">
-              <a aria-current="page" href="/">Home</a>
+        
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/courses">Alphabetz World</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/blogs">Blogs</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/gallery">Gallery</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact</a>
-              </li>
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <div class="d-flex align-items-center justify-content-between" id="slid-btn">
+                <button class="a-slid page-btn" style="padding:0.5rem 1rem">Alphabetz World</button>
+                <i class="fa-solid fa-caret-down pe-2"></i>
+              </div>
+              <ul id="slid-drop" style="padding-left: 2rem;">
+                <li><a href="/our-curriculum">Our Curriculum</a></li>
+                <li><a href="/Our-programmes">Our Programmes</a></li>
+                <li><a href="/a-day-at-alphabetz">A Day at Alphabetz</a></li>
+                <li><a href="/alphabetz-commits">Alphabetz commits</a></li>
+                <li><a href="/smart-speak">Smart Speak</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blogs">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
           </ul>
         </div>
       </aside>
     </header>
+    
+    <script>
+      // ====== 1.1 header (aside navigation bar) ======
+      function open_aside() {
+        "use strict";
+        const sidepanel = document.getElementById("mySidenav");
+        if (sidepanel) {
+          sidepanel.style.left = "0";
+        } else {
+          console.error("Error: Side panel element not found!");
+        }
+      }
+    
+      function close_aside() {
+        "use strict";
+        const sidepanel = document.getElementById("mySidenav");
+        if (sidepanel) {
+          sidepanel.style.left = "-355px";
+        } else {
+          console.error("Error: Side panel element not found!");
+        }
+      }
+    
+      // aside page button
+      let slid = document.getElementById("slid-btn");
+      if (slid !== null) {
+        slid.onclick = () => {
+          let dropdwon = document.getElementById("slid-drop");
+          dropdwon.classList.toggle("aside-dropdwon");
+        };
+      }
+    
+      // ====== 1.1 header (dropdown bar) ======
+      const dropdowns = document.querySelectorAll(".navbar .dropdown");
+      dropdowns.forEach((dropdown) => {
+        const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+        dropdownMenu.style.maxHeight = "0";
+        dropdown.addEventListener("mouseenter", () => {
+          dropdownMenu.style.visibility = "visible";
+          dropdownMenu.style.maxHeight = `${dropdownMenu.scrollHeight}px`;
+        });
+        dropdown.addEventListener("mouseleave", () => {
+          dropdownMenu.style.visibility = "hidden";
+          dropdownMenu.style.maxHeight = "0";
+        });
+      });
+    </script>

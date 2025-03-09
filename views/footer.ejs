@@ -39,7 +39,7 @@
               </figure>
               <div>
                 <h6>Email Address</h6>
-                <p class="pt-lg-1 pt-md-2"><span class="__cf_email__" data-cfemail="61180e14130f000c0421040c00080d4f020e0c">[email&#160;protected]</span> </p>
+                <a href="mailto:" style="color: rgb(54, 54, 54);" class="pt-lg-1 pt-md-2">alphabetzdgg</p>
               </div>
             </div>
           </a>
@@ -50,7 +50,7 @@
               </figure>
               <div>
                 <h6>Phone Number</h6>
-                <p class="pt-lg-1 pt-md-2">123-4567-890</p>
+                <a href="tel:8889898805" class="pt-lg-1 pt-md-2" style="color: rgb(54, 54, 54);">+91 88898 98805</p>
               </div>
             </div>
           </a>
@@ -95,9 +95,31 @@
   </footer>
   <!-- ======== End of 1.15. footer section ========  -->
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Ensure jQuery is available
+    if (typeof jQuery === "undefined") {
+        console.error("jQuery is not loaded!");
+        return;
+    }
+
+    // Initialize Magnific Popup for images
+    $('.image-popup').magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true // Enable gallery mode for navigation between images
+        }
+    });
+  });
+</script>
 
 <script src="/assets/js/javascript-lib/bootstrap.min.js" ></script>
-<!-- j Query -->
+<link rel="stylesheet" href="/assets/css/magnific-popup.css">
+
+<!-- Magnific Popup JS -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/magnific-popup.js"></script>
+
 <script src="/assets/js/jquery.js" type="57a617d2553e7eabc17aec4e-text/javascript"></script>
 <!-- slick slider js -->
 <script src="/assets/js/slick.min.js" type="57a617d2553e7eabc17aec4e-text/javascript"></script>

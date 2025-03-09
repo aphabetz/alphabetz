@@ -12,7 +12,9 @@
       <div class="gallery-grid">
         <% latestImages.forEach((image, index) => { %>
           <div class="gallery-item">
+            <a class="image-popup" href="<%= image.url %>">
             <img src="<%= image.url %>" alt="<%= image.title %>">
+            </a>
           </div>
         <% }); %>
       </div>

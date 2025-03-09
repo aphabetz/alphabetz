@@ -62,7 +62,7 @@
 <!-- ======== Review Section ======== -->
 <section class="Reviews" style="padding-top: 100px; max-width:1250px; margin:2px auto">
     <div class="container">
-        <div class="swiper-container " style="overflow:hidden; height:400px; padding-top:37px">
+        <div class="swiper-container " style="overflow:hidden; height:400px; padding-top:45px">
             
             <div class="swiper-wrapper " style="display: flex; ">
           <% testimonial.forEach((slide) => { %>
@@ -72,12 +72,16 @@
                 <img class="rounded-circle" src="<%= process.env.S3_BASE_URL + slide.image %>" alt="<%= slide.name %>">
               </figure>
               <div class="d-flex flex-column justify-content-center align-items-center text-center">
-                <p class="testimonial-text">
-                  <%= slide.review.length > 100 ? slide.review.slice(0, 100) + '...' : slide.review %>
-                </p>
-                <% if (slide.review.length > 100) { %>
-                  <button class="read-more-btn" onclick="openReviewPopup('<%= slide.review.replace(/'/g, '&apos;') %>')">Read More</button>
-                <% } %>
+                <span class="testimonial-text">
+                  <%= slide.review.length > 100 ? slide.review.slice(0, 100) + '...' : slide.review %> 
+                  <% if (slide.review.length > 100) { %>
+                    <span class="read-more-btn" onclick="openReviewPopup(`<%= slide.review.replace(/'/g, '\\\'').replace(/"/g, '&quot;') %>`)">
+                      Read More
+                    </span>
+                  <% } %>
+                </span>
+                
+              
                 <figure class="d-flex gap-2">
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
@@ -110,9 +114,9 @@
           prevEl: '.swiper-prev',
         },
         autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
+          delay: 3000,
+          disableOnInteraction: false,
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -179,6 +183,13 @@
       transition: transform 0.3s ease-in-out;
   }
 
+  @media (max-width:600px) {
+    .review-popup-content {
+      padding: 15px;
+      margin: 10px;
+  }
+  }
+
   /* Close Button Outside */
   .close-popup {
       position: absolute;
@@ -196,7 +207,12 @@
   .close-popup:hover {
       color: #b30a65;
   }
-
+.testimonial-text{
+  color:#323232;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
   /* Read More Button (Inside the Box) */
   .read-more-btn {
       margin-top: 5px;
@@ -205,7 +221,7 @@
       font-size: 12px;
       font-weight: 400;
       cursor: pointer;
-      padding: 5px 8px;
+      padding: 5px 8px 5px 0;
       border-radius: 4px;
       transition: all 0.3s ease-in-out;
   }

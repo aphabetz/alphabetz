@@ -158,10 +158,10 @@ if (document.getElementById("mySidenav")) {
     }
   }
   // aside page button
-  let slid = document.getElementById("slid-btn");
+  let slid = document.getElementsByClassName(".slid-btn");
   if (slid !== null) {
     slid.onclick = () => {
-      let dropdwon = document.getElementById("slid-drop");
+      let dropdwon = document.getElementsByClassName(".slid-drop");
       dropdwon.classList.toggle("aside-dropdwon");
     };
   }

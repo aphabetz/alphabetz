@@ -17,11 +17,11 @@
                 src="<%= process.env.S3_BASE_URL + item.banner.image %>" 
                 alt="blog_banner">
             </figure>
-            <div class="d-flex flex-column text-center">
+            <div class="d-flex flex-column " style="padding: 25px;">
               <h4 style="padding-bottom:20px"><%= item.title %></h4>
-              <%- item.description.slice(0,70).concat("...") %>
+              <%- item.description.slice(0,85).concat("...") %>
               <div style="padding-top: 20px;">
-                <a href="/blog/<%= item.seoDetails.slug %>" class="hover3">
+                <a href="/blog/<%= item.seoDetails.slug %>" class="hover3" style="justify-content:left">
                   Explore More<i class="fa fa-arrow-right-long"></i>
                 </a>
               </div>

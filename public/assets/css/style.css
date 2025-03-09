@@ -802,11 +802,8 @@ aside a {
   color: #1b1117;
 }
 
-#slid-drop {
-  display: none;
-}
 
-#slid-btn {
+.slid-btn {
   cursor: pointer;
 }
 
@@ -6418,13 +6415,13 @@ ul.ultp-news-ticker li {
   position: fixed;
   right: -75px;
   top: 50%;
+  z-index: 10;
   transform: rotate(-90deg);
   background-color: #200d46;
   color: white;
   padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 0px 0px 5px whitesmoke;
   text-orientation: mixed;
  border-top-left-radius: 10px;
  border-top-right-radius: 10px;
@@ -6433,6 +6430,17 @@ ul.ultp-news-ticker li {
 }
 
 .side-button:hover {
- color:#200D46;
+ color:white;
   background-color: #E33D5C;
+}
+
+
+.footer-end{
+  justify-content: space-between;
+}
+
+@media (max-width:768px) {
+  .footer-end{
+    justify-content: center;
+  }
 }

@@ -57,6 +57,21 @@ app.get('/about', async (req, res) => {
 });
 
 
+
+app.get('/our-spaces', async (req, res) => {
+    const baseUrl = req.protocol + '://' + req.get('Host');
+    const seoDetails = {
+        title: "",
+        metaDescription: "",
+        metaImage: ``,
+        keywords:" ",
+        canonical:"",
+    } 
+   
+    res.render('our-spaces', {body: "",baseUrl, seoDetails});
+});
+
+
 app.get('/our-curriculum', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
@@ -307,17 +322,17 @@ app.get('/blogs', async (req, res) => {
 
 
 
-// app.get('/thankyou', async (req, res) => {
-//     const baseUrl = req.protocol + '://' + req.get('Host');
-//     const seoDetails = {
-//         title: "Thank You for Contacting Karyasiddhi | Your Request Has Been Received",
-//         metaDescription: "Thank you for reaching out to Karyasiddhi. We have received your request and will get back to you shortly. Stay tuned for further updates.",
-//         metaImage: `${baseUrl}/${metaLogoPath}`,
-//         keywords:"Thank you page,Karyasiddhi request confirmation,Thank you message Karyasiddhi",
-//         canonical:"https://www.karyasiddhico.work/thankyou",
-//     } 
-//     res.render('thankyou', {body: "",seoDetails});
-// });
+app.get('/thankyou', async (req, res) => {
+    const baseUrl = req.protocol + '://' + req.get('Host');
+    const seoDetails = {
+        title: "Thank You for Contacting Us | Your Request Has Been Received",
+        metaDescription: "Thank you for reaching out to Alphabetz. We have received your request and will get back to you shortly. Stay tuned for further updates.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords:"Thank you page, request confirmation,Thank you message ",
+        canonical:"",
+    } 
+    res.render('thankyou', {body: "",seoDetails});
+});
 
 
 
@@ -360,19 +375,19 @@ app.get('/blog/:slug', async (req, res) => {
     });
 });
 
-// app.use(async (req, res, next) => {
-//     const baseUrl = req.protocol + '://' + req.get('Host');
-//     const seoDetails = {
-//         title: "404 - Page Not Found | Karyasiddhi",
-//         metaDescription: "Sorry, the page you are looking for cannot be found. Please check the URL or visit our homepage for more information.",
-//         metaImage: `${baseUrl}/assets/images/icon/metalogo.png`, // Replace with correct path if needed
-//         keywords: "404 page not found, Karyasiddhi page not found, Error page Karyasiddhi, Coworking space error",
-//         canonical: baseUrl + req.originalUrl, // You can use the original URL for canonical
-//     };
+app.use(async (req, res, next) => {
+    const baseUrl = req.protocol + '://' + req.get('Host');
+    const seoDetails = {
+        title: "404 - Page Not Found | Alphabetz",
+        metaDescription: "Sorry, the page you are looking for cannot be found. Please check the URL or visit our homepage for more information.",
+        metaImage: `${baseUrl}/assets/images/icon/metalogo.png`, // Replace with correct path if needed
+        keywords: "404 page not found,  page not found, Error page , error",
+        canonical: baseUrl + req.originalUrl, // You can use the original URL for canonical
+    };
     
 
-//     res.status(404).render('404', { seoDetails });
-// });
+    res.status(404).render('404', { seoDetails });
+});
 
 
 

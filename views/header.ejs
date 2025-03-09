@@ -65,14 +65,18 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                  <li class="dropdown">
+                    <a class="nav-link d-flex align-item-center gap-1" href="#">About<i class="fa-sharp fa-solid fa-sort-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/about">About Us</a></li>
+                      <li><a class="dropdown-item" href="/our-spaces">Our Spaces and <br> Amenities</a></li>
+                    </ul>
                   </li>
                   <li class="dropdown">
                     <a class="nav-link d-flex align-item-center gap-1" href="#">Alphabetz World<i class="fa-sharp fa-solid fa-sort-down"></i></a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/our-curriculum">Our Curriculum</a></li>
-                      <li><a class="dropdown-item" href="/Our-programmes">Our Programmes</a></li>
+                      <li><a class="dropdown-item" href="/our-programmes">Our Programmes</a></li>
                       <li><a class="dropdown-item" href="/a-day-at-alphabetz">A Day at Alphabetz</a></li>
                       <li><a class="dropdown-item" href="/alphabetz-commits">Alphabetz commits</a></li>
                       <li><a class="dropdown-item" href="/smart-speak">Smart Speak</a></li>
@@ -116,16 +120,23 @@
               <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <div class="d-flex align-items-center justify-content-between" class="slid-btn">
+                <button class="a-slid page-btn" style="padding:0.5rem 1rem">About</button>
+                <i class="fa-solid fa-caret-down pe-2"></i>
+              </div>
+              <ul class="slid-drop" style="padding-left: 2rem;">
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/our-spaces">Our Spaces and Amenities</a></li>
+              </ul>
             </li>
             <li class="nav-item">
-              <div class="d-flex align-items-center justify-content-between" id="slid-btn">
+              <div class="d-flex align-items-center justify-content-between" class="slid-btn">
                 <button class="a-slid page-btn" style="padding:0.5rem 1rem">Alphabetz World</button>
                 <i class="fa-solid fa-caret-down pe-2"></i>
               </div>
-              <ul id="slid-drop" style="padding-left: 2rem;">
+              <ul class="slid-drop" style="padding-left: 2rem;">
                 <li><a href="/our-curriculum">Our Curriculum</a></li>
-                <li><a href="/Our-programmes">Our Programmes</a></li>
+                <li><a href="/our-programmes">Our Programmes</a></li>
                 <li><a href="/a-day-at-alphabetz">A Day at Alphabetz</a></li>
                 <li><a href="/alphabetz-commits">Alphabetz commits</a></li>
                 <li><a href="/smart-speak">Smart Speak</a></li>
@@ -144,6 +155,15 @@
         </div>
       </aside>
     </header>
+    
+    <style>
+      .aside-dropdwon {
+        display: block !important;
+      }
+      .slid-drop {
+        display: none;
+      }
+    </style>
     
     <script>
       // ====== 1.1 header (aside navigation bar) ======
@@ -167,14 +187,15 @@
         }
       }
     
-      // aside page button
-      let slid = document.getElementById("slid-btn");
-      if (slid !== null) {
-        slid.onclick = () => {
-          let dropdwon = document.getElementById("slid-drop");
-          dropdwon.classList.toggle("aside-dropdwon");
-        };
-      }
+      // Fix: aside page button dropdown functionality
+      document.querySelectorAll(".slid-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const dropdown = this.parentElement.querySelector(".slid-drop");
+          if (dropdown) {
+            dropdown.classList.toggle("aside-dropdwon");
+          }
+        });
+      });
     
       // ====== 1.1 header (dropdown bar) ======
       const dropdowns = document.querySelectorAll(".navbar .dropdown");
@@ -191,3 +212,4 @@
         });
       });
     </script>
+    

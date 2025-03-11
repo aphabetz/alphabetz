@@ -367,3 +367,4 @@ if (document.querySelector(".scrollToTopButton")) {
     setTimeout(() => (circle.style.strokeDashoffset = circumference), 500);
   });
 }
+

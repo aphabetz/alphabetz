@@ -1,16 +1,18 @@
 <!-- <% if (popupbanners.length > 0) { %>
     <div id="popback" onclick="closepopup()"></div>
     <div id="popup-banner">
-        <button id="close-popup">&times;</button>
-  
+        
+      <button id="close-popup" class="hover1">&times;Close</button>
        
         <div class="desktop-popup-banner">
             <div class="swiper-container desktop-banner" id="desktop-popup-banners">
                 <div class="swiper-wrapper">
                     <% popupbanners.forEach(slide => { %>
                         <div class="swiper-slide bgimg">
-                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.webView %>" alt="karyasiddhi_Popupbanner"/>
+                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.webView %>" alt="<%= slide.title %>"/>
+                           
                         </div>
+                         
                     <% }) %>
                 </div>
             </div>
@@ -21,18 +23,101 @@
                 <div class="swiper-wrapper">
                     <% popupbanners.forEach(slide => { %>
                         <div class="swiper-slide bgimg">
-                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.mobileView %>" alt="karyasiddhi_Popupbanner"/>
+                            <img src="<%= process.env.S3_BASE_URL + slide.bannerImage.mobileView %>" alt="<%= slide.title %>"/>
                         </div>
                     <% }) %>
                 </div>
             </div>
         </div>
     </div>
-  <% } %> -->
+  <% } %>
 
  
 
-    
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bannersExist = document.querySelectorAll('#popup-banner .swiper-slide').length > 0;
+
+    if (!bannersExist) {
+        return;
+    }
+
+    const popupShown = sessionStorage.getItem('popbackShown');
+    if (popupShown) {
+        return;
+    }
+
+    // Show the popup
+    const popupBanner = document.getElementById('popup-banner');
+    const popback = document.getElementById('popback');
+
+    popupBanner.style.display = 'flex';
+    popback.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    sessionStorage.setItem('popbackShown', 'true');
+
+    // Delay Swiper initialization
+    setTimeout(() => {
+        initializeSwipers();
+    }, 300);
+
+    document.getElementById('close-popup').addEventListener('click', closepopup);
+    popback.addEventListener('click', closepopup);
+});
+
+function initializeSwipers() {
+    // Destroy existing Swipers
+    if (window.desktopSwiper) window.desktopSwiper.destroy(true, true);
+    if (window.mobileSwiper) window.mobileSwiper.destroy(true, true);
+
+    // Initialize Swiper for Desktop
+    window.desktopSwiper = new Swiper('#desktop-popup-banners', {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false, // Keeps autoplay running even after interaction
+        },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+
+    // Initialize Swiper for Mobile
+    window.mobileSwiper = new Swiper('#mobile-popup-banners', {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+
+    // Update Swiper to ensure proper rendering
+    setTimeout(() => {
+        window.desktopSwiper.update();
+        window.mobileSwiper.update();
+    }, 500);
+}
+
+function closepopup() {
+    const popupBanner = document.getElementById('popup-banner');
+    const popback = document.getElementById('popback');
+
+    popupBanner.style.display = 'none';
+    popback.style.display = 'none';
+    document.body.style.overflow = 'visible';
+
+    sessionStorage.setItem('popbackShown', 'true');
+}
+
+</script> -->
 <!--    
       
     <% banners.forEach(slide => { %>

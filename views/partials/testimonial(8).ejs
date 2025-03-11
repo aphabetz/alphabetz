@@ -1,6 +1,6 @@
 <!-- Amazing Moments Section -->
-<div class="Courses_Choice_bg" style="padding-top: 75px;">
-  <section class="Moments">
+
+  <section class="Moments" style="padding-top: 50 !important; background-color:#703edb; ">
     <div class="container">
       <div class="d-flex justify-content-center align-items-center flex-column mx-auto text-center"
         data-aos="fade-up">
@@ -24,7 +24,7 @@
       </div>
     </div>
   </section>
-</div>
+
 
 <!-- CSS Styling -->
 <style>
@@ -35,6 +35,8 @@
     gap: 15px;
     padding: 20px;
   }
+
+
 
   .gallery-item {
     position: relative;
@@ -47,6 +49,21 @@
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+  }
+
+  @media (max-width:600px) {
+    .gallery-grid {
+      
+      gap: 10px;
+      padding: 0px;
+    }
+    .gallery-item {
+      border-radius: 10px;
+    }
+  
+    .gallery-item img {
+      border-radius: 10px;
+    }
   }
 
   /* Asymmetrical Layout */

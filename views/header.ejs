@@ -41,6 +41,9 @@
   <!-- slick-slider link css -->
   <link rel="stylesheet" href="/assets/css/slick.min.css" />
 
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
@@ -120,28 +123,30 @@
               <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <div class="d-flex align-items-center justify-content-between" class="slid-btn">
-                <button class="a-slid page-btn" style="padding:0.5rem 1rem">About</button>
+              <div class="d-flex align-items-center justify-content-between">
+                <button class="a-slid page-btn slid-btn" style="padding:0.5rem 1rem">About</button>
                 <i class="fa-solid fa-caret-down pe-2"></i>
               </div>
-              <ul class="slid-drop" style="padding-left: 2rem;">
+              <ul class="slid-drop">
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/our-spaces">Our Spaces and Amenities</a></li>
               </ul>
             </li>
+            
             <li class="nav-item">
-              <div class="d-flex align-items-center justify-content-between" class="slid-btn">
-                <button class="a-slid page-btn" style="padding:0.5rem 1rem">Alphabetz World</button>
+              <div class="d-flex align-items-center justify-content-between">
+                <button class="a-slid page-btn slid-btn" style="padding:0.5rem 1rem">Alphabetz World</button>
                 <i class="fa-solid fa-caret-down pe-2"></i>
               </div>
-              <ul class="slid-drop" style="padding-left: 2rem;">
+              <ul class="slid-drop">
                 <li><a href="/our-curriculum">Our Curriculum</a></li>
                 <li><a href="/our-programmes">Our Programmes</a></li>
                 <li><a href="/a-day-at-alphabetz">A Day at Alphabetz</a></li>
-                <li><a href="/alphabetz-commits">Alphabetz commits</a></li>
+                <li><a href="/alphabetz-commits">Alphabetz Commits</a></li>
                 <li><a href="/smart-speak">Smart Speak</a></li>
               </ul>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="/blogs">Blogs</a>
             </li>
@@ -154,15 +159,35 @@
           </ul>
         </div>
       </aside>
+
+      <div class="icon-bar">
+              
+        <a href="https://api.whatsapp.com/send?phone=+918889898805&amp;text=Hello,%20I%20am%20interested%20in%20learning%20more%20about%20your%20preschool.%20Could%20you%20please%20share%20details%20on%20admissions%20and%20programs?"
+   target="_blank" 
+   class="twitter" 
+   aria-label="Contact us on WhatsApp">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+ 
+        <div class="iq-waves">
+        <div class="waves wave-1"></div>
+        <div class="waves wave-2"></div>
+        <div class="waves wave-3"></div>
+        <div class="waves wave-4"></div>
+        </div>
+      </div>
     </header>
     
     <style>
-      .aside-dropdwon {
+      .slid-drop {
+        display: none !important;
+        padding-left: 2rem !important;
+      }
+      
+      .slid-drop.aside-dropdwon {
         display: block !important;
       }
-      .slid-drop {
-        display: none;
-      }
+      
     </style>
     
     <script>
@@ -188,14 +213,21 @@
       }
     
       // Fix: aside page button dropdown functionality
-      document.querySelectorAll(".slid-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          const dropdown = this.parentElement.querySelector(".slid-drop");
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        const button = item.querySelector(".slid-btn");
+        const arrow = item.querySelector("i.fa-caret-down");
+        const dropdown = item.querySelector(".slid-drop");
+      
+        function toggleDropdown() {
           if (dropdown) {
             dropdown.classList.toggle("aside-dropdwon");
           }
-        });
+        }
+      
+        if (button) button.addEventListener("click", toggleDropdown);
+        if (arrow) arrow.addEventListener("click", toggleDropdown);
       });
+      
     
       // ====== 1.1 header (dropdown bar) ======
       const dropdowns = document.querySelectorAll(".navbar .dropdown");

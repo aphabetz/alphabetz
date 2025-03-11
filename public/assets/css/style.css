@@ -2075,7 +2075,8 @@ footer ul a {
 }
 
 footer ul a:hover {
-  color: #EAF035;
+  color: white;
+  text-shadow:0 0 2px whitesmoke;
 }
 
 footer hr {
@@ -2136,11 +2137,13 @@ footer .w-100 p {
 /* ========= 2.1. Subpage_Hero section ======== */
 
 .Subpage_Hero {
-  padding: 100px 0px;
+  padding: 40px 0px;
   position: relative;
+
+  
 }
 
-.Subpage_Hero::before {
+/* .Subpage_Hero::before {
   content: "";
   position: absolute;
   top: 0px;
@@ -2151,16 +2154,18 @@ footer .w-100 p {
   background-size: cover;
   background-position: center;
   z-index: -1;
-}
+} */
 
 .Subpage_Hero h1,
 .Subpage_Hero p {
-  color: #ffffff;
+  color: #200d46;
+  
 }
 
 .Subpage_Hero p {
   padding: 20px 0px 0px;
-  width: 44%;
+ 
+  
 }
 
 /* ========= End of 2.1. Subpage_Hero section ======== */
@@ -6443,4 +6448,141 @@ ul.ultp-news-ticker li {
   .footer-end{
     justify-content: center;
   }
+}
+
+
+.locations ul{
+  display:flex;
+
+}
+
+.locations ul li {
+  background-color: white;
+  border: 1px solid #200D46;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+
+
+.locations ul li:hover {
+  background-color: #E33D5C;
+  color: white;
+  border: none;
+}
+
+.locations ul li a {
+  color: #200D46;
+  font-size: 20px;
+  padding: 20px;
+  text-decoration: none;
+}
+
+/* Ensure text turns white on hover */
+.locations ul li:hover a {
+  color: white;
+}
+
+/* 
+.locations ul li {
+  background-color: #E33D5C;
+ 
+  
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+.locations ul li:hover {
+  background-color: #200D46;
+  
+}
+.locations ul li a {
+  color: #ffffff;
+  font-size: 16px;
+  padding: 20px;
+} */
+
+.Courses_Slider .col-lg-4:hover h4{
+color: #E33D5C !important;
+}
+
+
+.icon-bar{
+  position:fixed;
+  bottom: 5%;
+  right: 3%;
+  font-size: 30px;
+  z-index: 150;
+  background-color: #8bc34a;
+ height: 50px;
+ width: 50px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 50px;
+}
+
+.icon-bar a{
+  font-size: 24px;
+  padding: 10px;
+}
+.icon-bar i{
+  color: white;
+}
+.iq-waves {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: -1;
+}
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border:3px solid rgba(0, 255, 0, 0.3);
+  animation: wave-animation 2.5s ease-out infinite;
+}
+
+.wave-1 {
+  z-index: 0;
+}
+
+.wave-2 {
+  z-index: -1;
+  animation-delay: 1s; /* Stagger the second wave */
+}
+
+.wave-3 {
+  z-index: -2;
+  animation-delay: 2s; /* Stagger the second wave */
+}
+.wave-4 {
+  z-index: -3;
+  animation-delay: 3s; /* Stagger the second wave */
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.icon-bar:hover{
+  background-color: black;
 }

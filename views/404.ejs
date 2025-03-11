@@ -1,51 +1,12 @@
+<%- include('header'), {seoDetails} %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= seoDetails?.metaDescription || '' %>">
-
-    <!-- Open Graph meta tags for social sharing -->
-    <meta property="og:title" content="<%= seoDetails?.title || '' %>">
-    <meta property="og:description" content="<%= seoDetails?.metaDescription || '' %>">
-    <meta property="og:image" content="<%= seoDetails?.metaImage || '' %>">
-    <meta name="author" content="Karyasiddhi">
-    <meta property="og:type" content="website">
-
-<meta name="keywords" content="<%= seoDetails?.keywords || '' %>"> 
-        <link rel="canonical" href="<%= seoDetails?.canonical || '' %>" />
-
-
-    <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="<%= seoDetails?.title || '' %>">
-        <meta name="twitter:description" content="<%= seoDetails?.metaDescription || '' %>">
-        <meta name="twitter:image" content="<%= seoDetails?.metaImage || '' %>">
-        <meta name="twitter:url" content="<%= seoDetails.canonical || ''  %>">
-
-        <link rel="stylesheet" href="/assets/css/bootstrap-lib/bootstrap.min.css" />
-  <!-- style sheet of css -->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <!-- Responsive sheet of css -->
-  <link rel="stylesheet" href="/assets/css/responsive.css" />
-  <!-- fonts awsome icon link  -->
-  <link rel="stylesheet" href="/assets/font-awesome-lib/icon/font-awesome.min.css" />
-  <!-- slick-slider link css -->
-  <link rel="stylesheet" href="/assets/css/slick.min.css" />
-    <!--====== Title ======-->
-    <title><%= seoDetails?.title %></title>
-    
-    
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="/assets/images/icon/logo small.png" type="image/png">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    
-</head>
-<body>
-    <div style="max-width: 1250px; margin: 60px auto" style="display:flex; justify-content:center; align-items:center; height:100%">
+<body style="overflow: hidden;"><div class="Courses" style="padding-top: 0px; ">
+    <div style="max-width: 1250px; margin: 0 auto" style="display:flex; justify-content:center; align-items:center; height:100%">
     <div class="row flex-deouti padd-left new-padding-bottom">
         <div class="col-lg-6 align-self-center">
         <div class="abou-heding">
         <h1 class="h1error" style="   
-    color: #f00000;
+    color: #d30303;
     font-size: 80px;
     font-weight: 700;
     padding-bottom: 38px;">404</h1>
@@ -61,6 +22,6 @@
         </div>
         </div>
 </div>
-  
+  </div>
 </body>
 

@@ -71,10 +71,10 @@
 
 .gallery-container{
     column-count: 3;
-    gap:30px
+    gap:20px
 }
 .gallery-thumb{
-    margin-bottom: 30px ;
+    margin-bottom: 20px ;
 }
     @media (max-width:992px) {
         .gallery-container{
@@ -108,14 +108,17 @@
 
 <section class="Subpage_Hero">
     <div class="container">
-        <div class="text-lg-start text-center" data-aos="fade-up">
+        <div  data-aos="fade-up" style="
+  display: flex;
+flex-direction: column;
+align-items: center;">
             <h1>The Memory Nest</h1>
             <p>A glimpse into the joy, wonder, and pure magic of little lives in bloom.</p>
         </div>
     </div>
 </section>
 
-
+<!-- 
 <div class="form-switch  d-flex items-center" style="justify-content: center; display:flex; align-items:center; margin:50px 0 20px 0; padding-left:0;  position:relative">
     <div class="text-18 lh-1 text-dark-1 mr-10" style="margin-right: 10px;">Images</div>
     <div class="switch">
@@ -123,28 +126,19 @@
         <span class="switch__slider"></span>
     </div>
     <div class="text-18 lh-1 text-dark-1 ml-10" style="margin-left: 10px;">Videos</div>
-   </div>
+   </div> -->
 
-   <div class="page-title-area bg_cover mb-30">
+   <div class="page-title-area bg_cover mb-30 ">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-title-content">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb gallery-breadcrumb" id="imageTabs" style="justify-content: center;">
+                        <ol class="breadcrumb gallery-breadcrumb" id="galleryTabs" style="justify-content: center;">
                             <li class="breadcrumb-item active hover1" style="padding: 10px 32px;" data-filter="all">All</li>
-                            <% gallery.forEach((album) => { 
-                                if (album.mediaDetails.mediaType === "IMAGE") { %>
-                                    <li class="breadcrumb-item hover1" data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
-                            <% } }); %>
-                        </ol>
-
-                        <ol class="breadcrumb gallery-breadcrumb" id="videoTabs" style="display: none; justify-content: center;">
-                            <li class="breadcrumb-item active hover1" style="padding: 10px 32px;" data-filter="all">All</li>
-                            <% gallery.forEach((album) => { 
-                                if (album.mediaDetails.mediaType === "VIDEO") { %>
-                                    <li class="breadcrumb-item hover1"  data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
-                            <% } }); %>
+                            <% gallery.forEach((album) => { %>
+                                <li class="breadcrumb-item hover1" style="color: white;" data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
+                            <% }); %>
                         </ol>
                     </nav>
                 </div>
@@ -159,9 +153,9 @@
             <div class="rows">
                 <!-- Gallery Container -->
                 <div class="gallery-container state-gallery" >
-                    <% gallery.forEach((album) => { %>
+                    <% gallery.slice().reverse().forEach((album) => { %>
                         <% if (album.mediaDetails.mediaType === "IMAGE" && album.mediaDetails.images.length > 0) { %>
-                          <% album.mediaDetails.images.forEach((image) => { %>
+                          <% album.mediaDetails.images.slice().reverse().forEach((image) => { %>
                             <div class="gallery-thumb image-item" data-title="<%= album.title.toLowerCase() %>" >
                                 <a class="image-popup" href="<%= process.env.S3_BASE_URL + image %>">
                               <img src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" 
@@ -195,7 +189,7 @@
                             <p>Invalid YouTube URL provided.</p>
                           <% } %>
                         <% } %>
-                     
+
                       
                     <!-- Popup Structure -->
                     <div id="video-popup" class="video-popup" style="display: none;" onclick="closeVideoPopup(event)">
@@ -300,85 +294,35 @@
     </div>
 </div>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const switchToggle = document.getElementById('mediaSwitch');
-        const imageItems = document.querySelectorAll('.gallery-thumb[data-title]');
-        const videoItems = document.querySelectorAll('.gallery-thumb.video-item');
-        const imageTabs = document.getElementById('imageTabs');
-        const videoTabs = document.getElementById('videoTabs');
-        const imageBreadcrumbs = imageTabs.querySelectorAll('.breadcrumb-item');
-        const videoBreadcrumbs = videoTabs.querySelectorAll('.breadcrumb-item');
-    
-        function toggleMedia() {
-            if (switchToggle.checked) {
-                // Show only video section
-                imageItems.forEach(item => item.style.display = 'none');
-                videoItems.forEach(item => item.style.display = 'flex');
-                imageTabs.style.display = 'none';
-                videoTabs.style.display = 'flex';
-    
-                // Reset active state for filters
-                videoBreadcrumbs.forEach(btn => btn.classList.remove('active'));
-                videoBreadcrumbs[0].classList.add('active'); // Set "All" as active by default
-            } else {
-                // Show only image section
-                imageItems.forEach(item => item.style.display = 'flex');
-                videoItems.forEach(item => item.style.display = 'none');
-                imageTabs.style.display = 'flex';
-                videoTabs.style.display = 'none';
-    
-                // Reset active state for filters
-                imageBreadcrumbs.forEach(btn => btn.classList.remove('active'));
-                imageBreadcrumbs[0].classList.add('active'); // Set "All" as active by default
-            }
+        const galleryItems = document.querySelectorAll('.gallery-thumb');
+        const galleryBreadcrumbs = document.querySelectorAll('#galleryTabs .breadcrumb-item');
+
+        function filterGallery(filter) {
+            galleryItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-title') === filter) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
-    
-        function filterGallery(filter, mediaType) {
-            if (mediaType === 'IMAGE') {
-                imageItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-title') === filter) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            } else {
-                videoItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-title') === filter) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-        }
-    
-        imageBreadcrumbs.forEach((item) => {
+
+        galleryBreadcrumbs.forEach((item) => {
             item.addEventListener('click', function (event) {
                 event.preventDefault();
-                imageBreadcrumbs.forEach(btn => btn.classList.remove('active'));
+                galleryBreadcrumbs.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 const filter = this.getAttribute('data-filter');
-                filterGallery(filter, 'IMAGE');
+                filterGallery(filter);
             });
         });
-    
-        videoBreadcrumbs.forEach((item) => {
-            item.addEventListener('click', function (event) {
-                event.preventDefault();
-                videoBreadcrumbs.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                const filter = this.getAttribute('data-filter');
-                filterGallery(filter, 'VIDEO');
-            });
-        });
-    
-        // Initialize state correctly
-        toggleMedia();
-        switchToggle.addEventListener('change', toggleMedia);
+
+        // Set default filter to 'All'
+        filterGallery('all');
     });
-    
 </script>
 
 <%- include('footer') %>

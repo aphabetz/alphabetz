@@ -49,7 +49,7 @@
 <!--====== BLOG DETAILS PART ENDS ======-->
 
 
-<section class="blog-details" style="padding-bottom: 0; margin-top:80px">
+<section class="blog-details" style="padding-bottom: 0; margin-top:80px; margin-bottom:100px">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -97,10 +97,10 @@
                             <a href="#"><i class="fa fa-user-o"></i> by admin</a>
                             <a href="#"><i class="fa fa-comments-o"></i> 2 comments</a>
                         </div> -->
-                        <div style="margin-bottom: 35px; padding-bottom:35px; border-bottom:1px solid #b6b5b5; color:#1F0B45">
+                        <div style="margin-bottom: 35px; padding-bottom:25px; border-bottom:1px solid #b6b5b5; color:#1F0B45">
                         <h3 style="margin: 0px 0px 8px 0px; font-size:42px;"> <%= blogfull.title %></h3>
                         <h4 style="margin: 0px 0px 8px 0px; font-size:20px; font-weight:500"><%= blogfull.subTitle %></h4>
-                        <p style="color: #e33d5c; display:flex; align-items:center"><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span style="margin-right: 35px;">Blog</span><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span><%= blogfull.postDate %></span></p>
+                        <!-- <p style="color: #e33d5c; display:flex; align-items:center"><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span style="margin-right: 35px;">Blog</span><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span><%= blogfull.postDate %></span></p> -->
 </div>
 
                         <div class="blog-description"><%- blogfull.description.replace(/\n/g, '<br>') %></div>
@@ -152,62 +152,103 @@
                       <% } 
                   } %>
                   
-
                   <% if (item.multipleImages && item.multipleImages.length > 0) { %>
                     <div class="swiper-container">
                       <div class="swiper-wrapper">
                         <% item.multipleImages.forEach(function(image, index) { %>
                           <div class="swiper-slide">
                             <a class="image-popup" href="<%= process.env.S3_BASE_URL + image %>">
-                            <img 
-                              src="<%= process.env.S3_BASE_URL + image %>" 
-                              alt=" Image <%= index + 1 %>"
-                              class="gallery-image"
-                            />
+                              <img 
+                                src="<%= process.env.S3_BASE_URL + image %>" 
+                                alt="Image <%= index + 1 %>"
+                                class="gallery-image"
+                                data-index="<%= index %>"
+                              />
                             </a>
                           </div>
                         <% }); %>
                       </div>
-                  
-                      <!-- Navigation Controls -->
-                      <div class="swiper-navigation" style="z-index: 10;">
-                        <button class="custom-prev">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-icon">
-                            <path d="M15.75 19.5L8.25 12l7.5-7.5" />
-                          </svg>
-                        </button>
-                        <span class="slide-counter">
-                          <span id="current-slide">1</span> of <%= item.multipleImages.length %>
-                        </span>
-                        <button class="custom-next">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-icon">
-                            <path d="M8.25 4.5L15.75 12l-7.5 7.5" />
-                          </svg>
-                        </button>
-                      </div>
                     </div>
                   <% } %>
                   
+                  <style>
+                    .swiper-container {
+                      width: 100%;
+                      padding: 40px 0;
+                    overflow: hidden;
+                    }
                   
-                  <% if (blogfull.multipleDescriptions.youtube) { %>
-                    <div class="youtube-container" style="border-radius:20px">
-                      <iframe 
-                        width="100%" 
-                        height="435" 
-                        style="border-radius:20px; margin:25px 0"
-                        src="<%= blogfull.multipleDescriptions.youtube.replace('watch?v=', 'embed/') %>" 
-                        title="YouTube video" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                      </iframe>
-                    </div>
-                  <% } %>
+                    .swiper-slide {
+                      transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+                      border-radius: 20px;
+                      overflow: hidden;
+                      max-width: 80% !important;
+                    }
+                  
+                    /* Center image effect */
+                    .swiper-slide-active img {
+                      transform: scale(1);
+                      filter: none; /* Full color */
+                      opacity: 1;
+                      
+                    }
+                  
+                    /* Side images effect */
+                    .swiper-slide-prev img, 
+                    .swiper-slide-next img {
+                      transform: scale(0.94);
+                    
+                      opacity: 1;
+                      
+                    }
+                  
+                    .swiper-slide img {
+                      width: 100%;
+                      border-radius: 20px;
+                      transition: all 0.3s ease-in-out;
+                    }
+                  </style>
+                  
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      const swiper = new Swiper(".swiper-container", {
+                        loop: true,
+                        slidesPerView: "auto",
+                        centeredSlides: true,
+                        spaceBetween: 0,
+                        autoplay: {
+                          delay: 3000,
+                          disableOnInteraction: false,
+                        },
+                        navigation: {
+                          nextEl: ".swiper-button-next",
+                          prevEl: ".swiper-button-prev",
+                        },
+                        on: {
+                          slideChange: function () {
+                            document.querySelectorAll(".swiper-slide img").forEach(img => {
+                             
+                              img.style.opacity = "1";
+                            });
+                  
+                            let activeImage = document.querySelector(".swiper-slide-active img");
+                            if (activeImage) {
+                              
+                              activeImage.style.opacity = "1";
+                            }
+                          },
+                        },
+                      });
+                    });
+                  </script>
+                  
                   
               
                   <% if (item.button && item.button.hyperLink && item.button.title) { %>
-                    <div class="button">
-                    <a style="height: 55px; margin:25px 0" href="<%= item.button.hyperLink %>" class="hover1"><%= item.button.title %></a>
+                    <div class="button" style="display: flex
+;
+    justify-content: center;">
+                    <a style="height: 55px; margin:25px 0; margin-top:10px" href="<%= item.button.hyperLink %>" class="hover1"><%= item.button.title %></a>
                   </div>
                   <% } %> <!-- Only display the button if both hyperLink and title exist -->
               
@@ -216,20 +257,85 @@
               
           </div>
                     </div><!-- /.blog-details__content -->
-                    <div class="blog-details__meta">
-                        
-                        <div class="blog-details__share locations">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-                            </ul>
-                        </div><!-- /.blog-details__share -->
-                    </div><!-- /.blog-details__meta -->
+                    <div class="blog-details__meta" style="display:flex; justify-content:end;">
+                      <div class="blog-details__share locations">
+                          <ul style="display: flex; gap:10px">
+                              <li>
+                                  <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" id="facebookShare">
+                                      <i class="fa-brands fa-facebook"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" onclick="copyToClipboard(); return false;">
+                                      <i class="fa-solid fa-copy"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="https://www.instagram.com/" target="_blank">
+                                      <i class="fa-brands fa-instagram"></i>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="https://api.whatsapp.com/send?text=" target="_blank" id="whatsappShare">
+                                      <i class="fa-brands fa-whatsapp"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div><!-- /.blog-details__share -->
+                  </div>
+                  
+                  <!-- Custom Alert -->
+                  <div id="customAlert" class="custom-alert">Link copied to clipboard!</div>
+                  
+                  <style>
+                      .custom-alert {
+                          position: fixed;
+                          top: 150px;
+                          left: 50%;
+                          transform: translateX(-50%);
+                          background-color: #333;
+                          color: #fff;
+                          padding: 10px 20px;
+                          border-radius: 5px;
+                          font-size: 14px;
+                          opacity: 0;
+                          visibility: hidden;
+                          transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+                      }
+                      .custom-alert.show {
+                          opacity: 1;
+                          visibility: visible;
+                      }
+                  </style>
+                  
+                  <script>
+                      // Set dynamic URLs for sharing
+                      document.addEventListener("DOMContentLoaded", function () {
+                          let blogUrl = encodeURIComponent(window.location.href);
+                          document.getElementById("facebookShare").href += blogUrl;
+                          document.getElementById("whatsappShare").href += blogUrl;
+                      });
+                  
+                      function copyToClipboard() {
+                          let blogUrl = window.location.href;
+                          navigator.clipboard.writeText(blogUrl).then(() => {
+                              showCustomAlert();
+                          }).catch(err => {
+                              console.error('Failed to copy text: ', err);
+                          });
+                      }
+                  
+                      function showCustomAlert() {
+                          let alertBox = document.getElementById("customAlert");
+                          alertBox.classList.add("show");
+                          setTimeout(() => {
+                              alertBox.classList.remove("show");
+                          }, 2000); // Hide alert after 2 seconds
+                      }
+                  </script>
+                  
                 </div><!-- /.blog-details__main -->
-
-
+               
                
                  
          
@@ -290,26 +396,6 @@
 
 
 <%- include('./partials/enquire.ejs') %>
-<!--====== BLOG DETAILSSTART ======-->
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const swiper = new Swiper(".swiper-container", {
-      loop: true,
-      navigation: {
-        nextEl: ".custom-next",
-        prevEl: ".custom-prev",
-      },
-      
-      on: {
-        slideChange: function () {
-          document.getElementById("current-slide").innerText = this.realIndex + 1;
-        },
-      },
-    });
-  });
-  
-</script>
 
 <!-- <script>
  
@@ -365,8 +451,8 @@
   });
   
   </script> -->
-  
-  <style>
+ 
+  <!-- <style>
     .swiper-container {
       position: relative;
       
@@ -414,7 +500,7 @@
       margin: 0 10px;
     }
     
-  </style>
+  </style> -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <%- include('footer') %>

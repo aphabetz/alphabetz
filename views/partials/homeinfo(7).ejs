@@ -1,4 +1,4 @@
-<section style="padding-top: 100px;">
+<section style="padding-top: 50px;">
   <div class="container">
       <div class=" text-center " data-aos="fade-up">
           <h1 style="color:#1F0B45">What Parents Say</h1>
@@ -60,7 +60,7 @@
       
 </style>
 <!-- ======== Review Section ======== -->
-<section class="Reviews" style=" max-width:1250px; margin:2px auto">
+<section class="Reviews" style=" max-width:1250px; padding-top:30px; margin:2px auto">
     <div class="container">
         <div class="swiper-container " style="overflow:hidden; height:100%; padding-top:50px">
             
@@ -73,23 +73,14 @@
               </figure>
               <div class="d-flex flex-column justify-content-center align-items-center text-center">
                 <span class="testimonial-text">
-                  <%= slide.review.length > 100 ? slide.review.slice(0, 100) + '...' : slide.review %> 
-                  <% if (slide.review.length > 100) { %>
+                  <%= slide.review.length > 135 ? slide.review.slice(0, 135) + '...' : slide.review %> 
+                  <% if (slide.review.length > 135) { %>
                     <span class="read-more-btn" onclick="openReviewPopup(`<%= slide.review.replace(/'/g, '\\\'').replace(/"/g, '&quot;') %>`)">
                       Read More
                     </span>
                   <% } %>
                 </span>
-                
-              
-                <figure class="d-flex gap-2">
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                  <i class="fa-solid fa-star"></i>
-                </figure>
-                <h6><%= slide.name %></h6>
+                <h6 style="margin-top: 15px;"><%= slide.name %></h6>
                 <p class="pt-1"><%= slide.companyProfile %></p>
               </div>
             </div>
@@ -218,8 +209,9 @@
   .read-more-btn {
       margin-top: 5px;
       background-color: transparent;
-      color: #e41081;
-      font-size: 12px;
+      color: #999999;
+      font-size: 15px;
+      font-style: italic;
       font-weight: 400;
       cursor: pointer;
       padding: 5px 8px 5px 0;

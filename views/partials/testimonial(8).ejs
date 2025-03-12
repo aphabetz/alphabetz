@@ -1,6 +1,6 @@
 <!-- Amazing Moments Section -->
 
-  <section class="Moments" style="padding-top: 50 !important; background-color:#703edb; ">
+  <section class="Moments" style=" background-color:#e33d5c ">
     <div class="container">
       <div class="d-flex justify-content-center align-items-center flex-column mx-auto text-center"
         data-aos="fade-up">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="d-flex justify-content-center align-items-center" data-aos="fade-up">
-        <a href="/gallery" class="hover4">View More</a>
+        <a href="/gallery" class="hover4">View All Glimpses</a>
       </div>
     </div>
   </section>
@@ -49,6 +49,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+    
   }
 
   @media (max-width:600px) {
@@ -67,10 +68,10 @@
   }
 
   /* Asymmetrical Layout */
-  .gallery-item:nth-child(1) { grid-row: span 3; }
-  .gallery-item:nth-child(2) { grid-column: span 1; }
-  .gallery-item:nth-child(3) { grid-row: span 3; }
-  .gallery-item:nth-child(4) { grid-row: span 2; }
+  .gallery-item:nth-child(1) { grid-row: span 3; max-height: 600px; }
+  .gallery-item:nth-child(2) { grid-column: span 1; max-height: 290px;}
+  .gallery-item:nth-child(3) { grid-row: span 3;max-height: 600px; }
+  .gallery-item:nth-child(4) { grid-row: span 2; max-height: 290px; }
  
 </style>
 

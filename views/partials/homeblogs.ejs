@@ -69,7 +69,7 @@
         <p>A collection of ideas, experiences, and wisdom to spark your curiosity</p>
       </div>
   
-      <div class="Courses_Slider swiper-container" data-aos="fade-up">
+      <div class="Courses_Slider Courses_Slider-2 swiper-container" data-aos="fade-up">
         <div class="swiper-wrapper" style="display: flex;">
           <div class="swiper-slide" >
             <% blogs.forEach(item => { %>
@@ -107,10 +107,10 @@
     </div>
   </section>
   
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    var swiper = new Swiper('.Courses_Slider', {
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> 
+ <script>
+    var swiper = new Swiper('.Courses_Slider-2', {
       slidesPerView: 1,
       spaceBetween: 0,
       loop: true,

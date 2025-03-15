@@ -10,7 +10,11 @@
     grid-template-columns: repeat(2, 1fr); /* 2 images per row */
     grid-auto-rows: auto; /* Let the row height auto-adjust based on content */
   }
-  
+  @media (max-width:550px) {
+    .blog-details{
+margin-top: 30px !important;
+    }
+  }
   .gallery-item {
     position: relative;
     width: 100%; /* Ensure images take full width of the grid cell */
@@ -41,7 +45,22 @@
   font-weight: 400;
   line-height: 28px;
 }
-  
+@media (max-width:600px) {
+  .blog-description p, .description-block p{
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+.blog-details__content h3{
+  font-size: 42px;
+}
+
+@media (max-width:768px) {
+  .blog-details__content h3{
+    font-size: 30px;
+    line-height: 34px;
+  }
+}
 </style>
 
 <!--====== PAGE TITLE PART ENDS ======-->
@@ -98,7 +117,7 @@
                             <a href="#"><i class="fa fa-comments-o"></i> 2 comments</a>
                         </div> -->
                         <div style="margin-bottom: 35px; padding-bottom:25px; border-bottom:1px solid #b6b5b5; color:#1F0B45">
-                        <h3 style="margin: 0px 0px 8px 0px; font-size:42px;"> <%= blogfull.title %></h3>
+                        <h3 style="margin: 0px 0px 8px 0px; "> <%= blogfull.title %></h3>
                         <h4 style="margin: 0px 0px 8px 0px; font-size:20px; font-weight:500"><%= blogfull.subTitle %></h4>
                         <!-- <p style="color: #e33d5c; display:flex; align-items:center"><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span style="margin-right: 35px;">Blog</span><span style="height: 8px; width:8px; margin-right:8px; border-radius:50px; background:#e33d5c; display:inline-block"></span><span><%= blogfull.postDate %></span></p> -->
 </div>
@@ -257,7 +276,7 @@
               
           </div>
                     </div><!-- /.blog-details__content -->
-                    <div class="blog-details__meta" style="display:flex; justify-content:end;">
+                    <div class="blog-details__meta" style="display:flex; justify-content:end; margin-bottom:50px">
                       <div class="blog-details__share locations">
                           <ul style="display: flex; gap:10px">
                               <li>
@@ -266,10 +285,10 @@
                                   </a>
                               </li>
                               <li>
-                                  <a href="#" onclick="copyToClipboard(); return false;">
-                                      <i class="fa-solid fa-copy"></i>
-                                  </a>
-                              </li>
+                                <button onclick="copyToClipboard(event)" style="background: none;" >
+                                  <i class="fa-solid fa-copy"></i>
+                              </button>
+                            </li>
                               <li>
                                   <a href="https://www.instagram.com/" target="_blank">
                                       <i class="fa-brands fa-instagram"></i>
@@ -308,32 +327,37 @@
                       }
                   </style>
                   
-                  <script>
-                      // Set dynamic URLs for sharing
-                      document.addEventListener("DOMContentLoaded", function () {
-                          let blogUrl = encodeURIComponent(window.location.href);
-                          document.getElementById("facebookShare").href += blogUrl;
-                          document.getElementById("whatsappShare").href += blogUrl;
-                      });
-                  
-                      function copyToClipboard() {
-                          let blogUrl = window.location.href;
-                          navigator.clipboard.writeText(blogUrl).then(() => {
-                              showCustomAlert();
-                          }).catch(err => {
-                              console.error('Failed to copy text: ', err);
-                          });
-                      }
-                  
-                      function showCustomAlert() {
-                          let alertBox = document.getElementById("customAlert");
-                          alertBox.classList.add("show");
-                          setTimeout(() => {
-                              alertBox.classList.remove("show");
-                          }, 2000); // Hide alert after 2 seconds
-                      }
-                  </script>
-                  
+                
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      let blogUrl = encodeURIComponent(window.location.href);
+      document.getElementById("facebookShare").href += blogUrl;
+      document.getElementById("whatsappShare").href += blogUrl;
+  });
+  
+  function copyToClipboard(event) {
+    if (event) event.preventDefault(); // Prevents default behavior
+
+    let blogUrl = window.location.href;
+
+    // Create a temporary input field to enable copying on mobile
+    let tempInput = document.createElement("input");
+    tempInput.value = blogUrl;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    showCustomAlert();
+}
+  function showCustomAlert() {
+      let alertBox = document.getElementById("customAlert");
+      alertBox.classList.add("show");
+      setTimeout(() => {
+          alertBox.classList.remove("show");
+      }, 2000); // Hide alert after 2 seconds
+  }
+  </script>
                 </div><!-- /.blog-details__main -->
                
                
@@ -501,6 +525,5 @@
     }
     
   </style> -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <%- include('footer') %>

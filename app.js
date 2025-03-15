@@ -30,13 +30,14 @@ app.get('/', async (req, res) => {
     const clients = await getclientle();
     const popupbanners = await getHomepopupBanner();
    const latestImages = await getLatestGalleryImages();
-    const seoDetails = {
-            title: "Alphabetz Pre-School Dongargarh",
-            metaDescription: "Discover a premium schooling experience in dongargarh at alphabetz. Designed for kids, we provide a productive, flexible, and inspiring environment.",
-            metaImage: `${baseUrl}/${metaLogoPath}`,
-            keywords:"Karyasiddhi coworking,Coworking space in Raipur,Best coworking amenities Raipur,Affordable coworking Raipur ",
-            canonical:`${baseUrl}/${metaLogoPath}`,
-    } 
+   const seoDetails = {
+    title: "Alphabetz International Preschool Dongargarh | Quality Early Education",
+    metaDescription: "Alphabetz International Preschool in Dongargarh offers a nurturing environment for early childhood education. Enroll your child for a fun and interactive learning experience.",
+    metaImage: `${baseUrl}/${metaLogoPath}`,
+    keywords: "Alphabetz Preschool, Preschool in Dongargarh, Best preschool in Chhattisgarh, Early childhood education, Play school in Dongargarh, Kindergarten in Dongargarh, Kids learning center",
+    canonical: `${baseUrl}`,
+};
+
    
    
     res.render('index', {body: "",baseUrl,latestImages, websiteID,popupbanners,testimonial,blogs,gallery,clients, API_BASE_URL,WEBSITE_ID_KEY, seoDetails,banners});
@@ -46,101 +47,98 @@ app.get('/', async (req, res) => {
 app.get('/about', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "About Alphabetz Preschool Dongargarh | Nurturing Early Learning",
+        metaDescription: "Learn about Alphabetz International Preschool in Dongargarh, our vision, mission, and commitment to providing high-quality early childhood education in a safe and engaging environment.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "About Alphabetz Preschool, Preschool in Dongargarh, Early childhood education, Play school mission, Kindergarten philosophy, Best preschool in Chhattisgarh",
+        canonical: `${baseUrl}/about`,
+    };
+    
    
     res.render('about', {body: "",baseUrl, seoDetails});
 });
 
 
-
 app.get('/our-spaces', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Our Spaces | Alphabetz Preschool Dongargarh - Safe & Fun Learning",
+        metaDescription: "Explore the well-designed learning spaces and child-friendly amenities at Alphabetz International Preschool Dongargarh. A safe, engaging, and fun environment for kids.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool amenities, Best preschool in Dongargarh, Learning spaces for kids, Child-friendly classrooms, Safe play area, Kindergarten infrastructure, Play school facilities",
+        canonical: `${baseUrl}/our-spaces`,
+    };
    
-    res.render('our-spaces', {body: "",baseUrl, seoDetails});
+    res.render('our-spaces', { body: "", baseUrl, seoDetails });
 });
 
 
 app.get('/our-curriculum', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Our Curriculum | Alphabetz Preschool Dongargarh - Play-Based Learning",
+        metaDescription: "Discover the innovative curriculum at Alphabetz Preschool Dongargarh, designed to nurture creativity, cognitive skills, and social growth through play-based learning.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool curriculum, Best curriculum for kids, Play-based learning, Early childhood education, Learning through play, Kindergarten syllabus, Montessori approach",
+        canonical: `${baseUrl}/our-curriculum`,
+    }; 
    
-    res.render('our-curriculum', {body: "",baseUrl, seoDetails});
+    res.render('our-curriculum', { body: "", baseUrl, seoDetails });
 });
 
 
 app.get('/a-day-at-alphabetz', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "A Day at Alphabetz | Fun & Learning at Alphabetz Preschool Dongargarh",
+        metaDescription: "Experience a day in the life of a child at Alphabetz Preschool Dongargarh – filled with fun activities, interactive learning, and creative play in a nurturing environment.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool daily schedule, A day at preschool, Kids daily activities, Kindergarten routine, Fun learning for kids, Early education, Preschool timetable",
+        canonical: `${baseUrl}/a-day-at-alphabetz`,
+    }; 
    
-    res.render('a-day-at-alphabetz', {body: "",baseUrl, seoDetails});
+    res.render('a-day-at-alphabetz', { body: "", baseUrl, seoDetails });
 });
-
 
 app.get('/our-programmes', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Our Programmes | Alphabetz Preschool Dongargarh - Learning for Every Age",
+        metaDescription: "Explore the diverse preschool programmes at Alphabetz Dongargarh, designed for toddlers, nursery, and kindergarten students to build strong learning foundations.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool programmes, Best preschool in Dongargarh, Early childhood education, Toddler learning, Kindergarten curriculum, Nursery classes, Child development programmes",
+        canonical: `${baseUrl}/our-programmes`,
+    }; 
    
-    res.render('our-programmes', {body: "",baseUrl, seoDetails});
+    res.render('our-programmes', { body: "", baseUrl, seoDetails });
 });
-
-
 
 
 app.get('/alphabetz-commits', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Alphabetz Commits | Our Promise to Quality Preschool Education",
+        metaDescription: "At Alphabetz Preschool Dongargarh, we are committed to providing a safe, nurturing, and engaging environment where children thrive through quality early education.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool commitments, Safe learning environment, Quality education for kids, Early childhood care, Best preschool facilities, Kids learning commitment",
+        canonical: `${baseUrl}/alphabetz-commits`,
+    }; 
    
-    res.render('commits', {body: "",baseUrl, seoDetails});
+    res.render('commits', { body: "", baseUrl, seoDetails });
 });
 
 
 app.get('/smart-speak', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Smart Speak | Language & Communication Development for Kids",
+        metaDescription: "Smart Speak at Alphabetz Preschool helps children develop early communication skills, language proficiency, and confidence through interactive learning.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Smart Speak, Kids communication skills, Language development for children, Preschool speaking programs, Early childhood speech development",
+        canonical: `${baseUrl}/smart-speak`,
+    }; 
    
-    res.render('smart-speak', {body: "",baseUrl, seoDetails});
+    res.render('smart-speak', { body: "", baseUrl, seoDetails });
 });
 
 
@@ -148,128 +146,51 @@ app.get('/admission', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const websiteID = await getWebsiteID();
     const seoDetails = {
-        title: "",
-        metaDescription: "",
-        metaImage: ``,
-        keywords:" ",
-        canonical:"",
-    } 
+        title: "Admission | Enroll Your Child at Alphabetz Preschool Dongargarh",
+        metaDescription: "Join Alphabetz Preschool today! Get admission details, eligibility, and process to enroll your child in a fun and nurturing learning environment.",
+        metaImage: `${baseUrl}/${metaLogoPath}`,
+        keywords: "Preschool admission, Alphabetz enrollment, Admission process for preschool, Kindergarten admission Dongargarh, Early childhood education",
+        canonical: `${baseUrl}/admission`,
+    }; 
    
-    res.render('admission', {body: "",baseUrl,websiteID,API_BASE_URL,WEBSITE_ID_KEY, BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS ,seoDetails});
+    res.render('admission', { body: "", baseUrl, websiteID, API_BASE_URL, WEBSITE_ID_KEY, BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS, seoDetails });
 });
 
 
 
 
-// app.get('/services', async (req, res) => {
-//     const location= await getlocation();
-//     const baseUrl = req.protocol + '://' + req.get('Host');
-//     const seoDetails = {
-//         title: "Karyasiddhi Coworking Services | Flexible & Professional Workspaces",
-//         metaDescription: "Explore the exceptional coworking services at Karyasiddhi in Raipur. Tailored to meet the needs of professionals and businesses, our flexible workspaces provide the perfect balance of productivity and comfort, with premium amenities and a collaborative environment.",
-//         metaImage: `${baseUrl}/${metaLogoPath}`,
-//         keywords:"Coworking space services Raipur,Flexible workspaces Raipur,Professional coworking services,Productive coworking environment ",
-//         canonical:"https://www.karyasiddhico.work/services",
-//     } 
-   
-//     res.render('services', {body: "",location, seoDetails});
-// });
-// app.get('/service-details/:serviceId', async (req, res) => {  
-//     const { serviceId } = req.params;
-//     const baseUrl = req.protocol + '://' + req.get('Host');
-//     const websiteID = await getWebsiteID();  
-//     const location = await getlocation();   
-    
-
-//     let serviceName = '';
-
-//     // Map serviceId to a service name
-//     if (serviceId === 'coworking-seat') {
-//         serviceName = 'Coworking Seat';
-//         description = 'Discover the ideal flexible coworking spaces at Karyasiddhi. Designed for professionals and businesses, our flexible workspaces in Raipur offer a productive environment tailored to your needs. Join a community that fosters collaboration and creativity.';
-//          keywords=`Flexible coworking spaces Raipur,Coworking space for professionals Raipur,Flexible workspaces Raipur,Collaborative coworking Raipur,Coworking space with flexible seating`
-//     } else if (serviceId === 'private-cabin') {
-//         serviceName = 'Private Cabin';
-//         description =`Experience privacy and productivity with Karyasiddhi's private cabins in Raipur. Perfect for teams or individuals looking for a focused workspace, our cabins offer a professional and quiet environment to get work done efficiently.`;
-//         keywords=`Private cabins Raipur,
-//         Private offices Raipur,
-//         Coworking private cabins,
-//         Quiet workspaces Raipur,
-//         Professional private cabin Raipur`
-//     } else if (serviceId === 'meeting-room') {
-//         serviceName = 'Meeting Room';
-//         description =`Host professional meetings and collaborations in our fully-equipped meeting rooms at Karyasiddhi. Located in Raipur, our meeting rooms provide a productive and comfortable space for presentations, team discussions, and more`;
-//         keywords=`Meeting rooms Raipur,Conference rooms Raipur,Professional meeting rooms Raipur,Meeting rooms with amenities Raipur,Fully equipped meeting rooms Raipur`
-//     } else if (serviceId === 'one-day-pass') {
-//         serviceName = 'One Day Pass';
-//         description =`Try Karyasiddhi's coworking space with our convenient one-day passes in Raipur. Perfect for short-term needs, our day passes offer full access to premium workspaces, giving you the flexibility to work when and where you need it`;
-//         keywords=`One-day coworking pass Raipur,Day pass coworking Raipur,Flexible day pass coworking,Temporary coworking access Raipur`
-//     } else if (serviceId === 'weekly-pass') {
-//         serviceName = 'Weekly Pass';
-//         description =`Make the most of your week with Karyasiddhi's weekly passes. Access our premium coworking space in Raipur, offering flexible seating, high-speed internet, and a collaborative environment to meet your professional needs.`;
-//         keywords=`Weekly coworking pass Raipur,Flexible weekly pass coworking,Coworking weekly access Raipur,Weekly coworking membership Raipur,Short-term coworking pass Raipur`
-//     }
-
-//     const seoDetails = {
-//         title: `${serviceName} at Karyasiddhi | Your Perfect Workspace in Raipur`,
-//         metaDescription: `${description}`,
-//         metaImage: `${baseUrl}/${metaLogoPath}`,
-//         keywords: `${keywords}`,
-//         canonical: `https://www.karyasiddhico.work/service-details/${serviceId}`,
-//     };
-//     res.render('details', { seoDetails, serviceId, serviceName, websiteID, API_BASE_URL, WEBSITE_ID_KEY, location, BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS });  // Pass serviceId to the detailed.ejs page
-// });
 
 app.get('/gallery', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
-    const gallery= await getgallery();
-    console.log(process.env.S3_BASE_url)
+    const gallery = await getgallery();
+    
     const seoDetails = {
-        title: "Gallery of Karyasiddhi Coworking Spaces | Explore Our Workspaces and Amenities",
-        metaDescription: "Explore the Karyasiddhi gallery showcasing our coworking spaces . View high-quality images of our flexible workspaces, meeting rooms, private cabins, and more. See how our spaces support productivity and creativity.",
+        title: "Gallery | Explore Alphabetz Preschool in Dongargarh",
+        metaDescription: "Discover the vibrant learning spaces at Alphabetz Preschool in Dongargarh. Browse high-quality images of our classrooms, play areas, activities, and more.",
         metaImage: `${baseUrl}/${metaLogoPath}`,
-        keywords:"Karyasiddhi gallery,Coworking spaces  images,Flexible workspaces ,Karyasiddhi coworking photos ",
-        canonical:"https://www.karyasiddhico.work/gallery",
-    } 
-   
-    res.render('gallery', {body: "", gallery,seoDetails});
-});
+        keywords: "Alphabetz Preschool gallery, Dongargarh preschool images, Early learning center photos, Kids activity space, Kindergarten environment",
+        canonical: `${baseUrl}/gallery`,
+    };
 
+    res.render('gallery', { body: "", gallery, seoDetails });
+});
 app.get('/gallery/:filter', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
-    const {filter} = req.params;
-    const gallery= await getgallery();
-   
+    const { filter } = req.params;
+    const gallery = await getgallery();
+
     const seoDetails = {
-        title: `Gallery of Karyasiddhi Coworking Spaces in ${filter} | Explore Our Workspaces and Amenities`,
-        metaDescription: "Explore the Karyasiddhi gallery showcasing our coworking spaces . View high-quality images of our flexible workspaces, meeting rooms, private cabins, and more. See how our spaces support productivity and creativity.",
+        title: `Alphabetz Preschool Gallery | ${filter} Images & Activities`,
+        metaDescription: `Explore photos of ${filter} at Alphabetz Preschool in Dongargarh. See how we create a nurturing, fun, and educational environment for young learners.`,
         metaImage: `${baseUrl}/${metaLogoPath}`,
-        keywords:"Karyasiddhi gallery,Coworking spaces  images,Flexible workspaces ,Karyasiddhi coworking photos ",
-        canonical:`https://www.karyasiddhico.work/gallery/${filter}`,
-    } 
-   
-    res.render('gallery', {body: "", gallery,seoDetails});
+        keywords: `Alphabetz Preschool ${filter} images, Dongargarh preschool gallery, Kids activities, Early education spaces, Fun learning areas`,
+        canonical: `${baseUrl}/gallery/${filter}`,
+    };
+
+    res.render('gallery', { body: "", gallery, seoDetails });
 });
 
 
-
-
-
-// app.get('/bookseat', async (req, res) => {
-//     const baseUrl = req.protocol + '://' + req.get('Host');
-//     const websiteID = await getWebsiteID(); 
-//     const location= await getlocation();
-//     const clients = await getclientle();
-//     const seoDetails = {
-//         title: "Book Your Coworking Seat at Karyasiddhi | Flexible Workspaces in Raipur",
-//         metaDescription: "Secure your spot at Karyasiddhi coworking spaces. Fill out the form to book a flexible coworking seat at our Raipur location. Get access to premium workspaces and amenities designed for productivity.",
-//         metaImage: `${baseUrl}/${metaLogoPath}`,
-//         keywords:"Book coworking seat Raipur,Coworking space booking form,Reserve a workspace Raipur,Flexible coworking seat booking,Coworking seat reservation Raipur ",
-//         canonical:"https://www.karyasiddhico.work/bookseat",
-//     } 
-   
-//     res.render('bookseat', {body: "",seoDetails ,websiteID,API_BASE_URL,WEBSITE_ID_KEY,location,clients, BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS});
-// });
 
 
 
@@ -278,30 +199,30 @@ app.get('/gallery/:filter', async (req, res) => {
 app.get('/contact', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const websiteID = await getWebsiteID(); 
+    
     const seoDetails = {
-        title: "Contact Karyasiddhi Coworking Space | Get in Touch for Inquiries and Support",
-        metaDescription: "Have questions or need assistance? Contact Karyasiddhi coworking space for inquiries, booking details, or support. We’re here to help you with flexible workspaces and more. Reach out to us today.",
+        title: "Contact Alphabetz Preschool | Get in Touch with Us",
+        metaDescription: "Have questions about admissions, programs, or facilities? Contact Alphabetz Preschool in Dongargarh for inquiries, support, and more. We’re happy to assist you!",
         metaImage: `${baseUrl}/${metaLogoPath}`,
-        keywords:"Contact Karyasiddhi coworking,Get in touch with coworking space,Karyasiddhi contact page,Contact us coworking Raipur ",
-        canonical:"https://www.karyasiddhico.work/contact",
-    } 
-   
-    res.render('contact', {body: "",websiteID,API_BASE_URL,WEBSITE_ID_KEY,CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS, seoDetails});
+        keywords: "Contact Alphabetz Preschool, Preschool admission inquiries, Get in touch with Alphabetz, Alphabetz Preschool Dongargarh contact",
+        canonical: `${baseUrl}/contact`,
+    };
+
+    res.render('contact', { body: "", websiteID, API_BASE_URL, WEBSITE_ID_KEY, CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS, seoDetails });
 });
-
-
 app.get('/career', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const websiteID = await getWebsiteID();
+    
     const seoDetails = {
-        title: "Join the Karyasiddhi Team | Career Opportunities at Our Coworking Space",
-        metaDescription: "Explore exciting career opportunities at Karyasiddhi. Send us your resume and be part of a growing team in a dynamic coworking environment. Apply now and help us shape the future of coworking spaces.",
+        title: "Join Alphabetz Preschool | Career Opportunities in Early Education",
+        metaDescription: "Looking to build a career in early childhood education? Explore job openings at Alphabetz Preschool in Dongargarh. Join our passionate team and help shape young minds.",
         metaImage: `${baseUrl}/${metaLogoPath}`,
-        keywords:" Career opportunities at Karyasiddhi,Join Karyasiddhi team,Coworking space job openings",
-        canonical:"https://www.karyasiddhico.work/career",
-    } 
-   
-    res.render('career', {body: "", seoDetails, websiteID,API_BASE_URL,WEBSITE_ID_KEY,CAREER_ENQUIRY_DYNAMIC_FIELDS_KEYS});
+        keywords: "Alphabetz Preschool careers, Teaching jobs at Alphabetz, Preschool job openings, Early education careers in Dongargarh",
+        canonical: `${baseUrl}/career`,
+    };
+
+    res.render('career', { body: "", seoDetails, websiteID, API_BASE_URL, WEBSITE_ID_KEY, CAREER_ENQUIRY_DYNAMIC_FIELDS_KEYS });
 });
 
 
@@ -310,16 +231,15 @@ app.get('/blogs', async (req, res) => {
   
     const blogs = await getBlog();
     const seoDetails = {
-        title: "Karyasiddhi Blog | Latest News and Insights on Coworking Spaces and Productivity",
-        metaDescription: "Explore the Karyasiddhi blog for the latest updates, tips, and insights on coworking spaces, productivity, and business growth. Stay informed with our expert articles and discover how coworking can benefit you.",
+        title: "Alphabetz Blog | Early Childhood Education Tips & Parenting Insights",
+        metaDescription: "Explore expert articles on preschool education, child development, parenting tips, and learning activities. Stay updated with Alphabetz Preschool’s latest blogs.",
         metaImage: `${baseUrl}/${metaLogoPath}`,
-        keywords:"Karyasiddhi blog,Coworking space blog,Coworking space tips,Business growth through coworking ",
-        canonical:"https://www.karyasiddhico.work/blogs",
-    } 
-   
-    res.render('blogs', {body: "",blogs,baseUrl, seoDetails});
-});
+        keywords: "Alphabetz Preschool blog, Early childhood education tips, Parenting advice, Child development articles, Learning activities for preschoolers",
+        canonical: `${baseUrl}/blogs`,
+    };
 
+    res.render('blogs', { body: "", blogs, baseUrl, seoDetails });
+});
 
 
 app.get('/thankyou', async (req, res) => {

@@ -1,18 +1,20 @@
 <style>
-    .Courses_Slider {
+    .Courses_Slider-2 {
       position: relative;
       overflow: hidden;
       padding-top: 40px;
+      height: 100%;
+      width: 100%;
     }
   
-    .swiper-slide {
+    .Courses_Slider-2 .swiper-slide {
       flex-shrink: 0;
       width: auto;
       max-width: 100%;
-  
+  width: 100% !important;
     }
   
-    .swiper-button-prev, .swiper-button-next {
+     .swiper-button-prev, .swiper-button-next {
       width: 35px;
       height: 35px;
       background: #E33d5c;
@@ -28,21 +30,21 @@
       cursor: pointer;
       z-index: 10;
     }
-    .Courses_Slider p{
+    .Courses_Slider-2 p{
       padding:  0;
     }
-    .Courses_Slider h4{
+    .Courses_Slider-2 h4{
       font-size: 30px;
     }
 
     @media (max-width:600px) {
-      .Courses_Slider h4{
+      .Courses_Slider-2 h4{
         font-size: 22px;
         line-height: 26px;
       }
     }
   
-    .Courses_Slider h5{
+    .Courses_Slider-2 h5{
       padding-top: 10px;
       font-size: 18px;
       color:#1f0b45
@@ -62,7 +64,7 @@
     
   </style>
   
-  <section class="Courses" style="padding: 0; background:none">
+  <section class="Courses blogcourses" style="padding: 0; padding-bottom:0px; background:none">
     <div class="container" style="position:relative">
       <div class="d-flex justify-content-center align-items-center text-center flex-column mx-auto" data-aos="fade-up">
         <h1>Blogs & Insights</h1>

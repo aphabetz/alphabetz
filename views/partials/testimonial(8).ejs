@@ -1,90 +1,152 @@
-<!-- Amazing Moments Section -->
+<section class="Moments" style="background-color: #e33d5c;">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center flex-column mx-auto text-center" data-aos="fade-up">
+      <h1>Amazing Moments</h1>
+      <p>A Visual Celebration of Fun, Creativity, and Growth at Alphabetz</p>
+    </div>
 
-  <section class="Moments" style=" background-color:#e33d5c ">
-    <div class="container">
-      <div class="d-flex justify-content-center align-items-center flex-column mx-auto text-center"
-        data-aos="fade-up">
-        <h1>Amazing Moments</h1>
-        <p>A Visual Celebration of Fun, Creativity, and Growth at Alphabetz</p>
-      </div>
-
-      <!-- Asymmetrical Grid Layout -->
-      <div class="gallery-grid">
-        <% latestImages.forEach((image, index) => { %>
-          <div class="gallery-item">
-            <a class="image-popup" href="<%= image.url %>">
-            <img src="<%= image.url %>" alt="<%= image.title %>">
-            </a>
-          </div>
-        <% }); %>
-      </div>
-
-      <div class="d-flex justify-content-center align-items-center" data-aos="fade-up">
-        <a href="/gallery" class="hover4">View All Glimpses</a>
+    <!-- Asymmetrical Grid Layout -->
+    <div class="gallery-container">
+      <div class="swiper-wrapper">
+        <% gallery.slice().reverse().forEach((album) => { %>
+          <% if (album.mediaDetails.mediaType === "IMAGE" && album.mediaDetails.images.length > 0) { %>
+            <% album.mediaDetails.images.slice().reverse().forEach((image, index) => { %>
+              <div class="swiper-slide slide-images">
+                <a class="image-popup" href="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>">
+                  <img 
+                    src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" 
+                    alt="Image"
+                    class="gallery-image"
+                    data-index="<%= index %>"
+                  />
+                </a>
+              </div>
+            <% }); %>
+          <% } %>
+        <% }) %>
       </div>
     </div>
-  </section>
 
+    <div class="d-flex justify-content-center align-items-center" data-aos="fade-up">
+      <a href="/gallery" class="hover4">View All Glimpses</a>
+    </div>
+  </div>
+</section>
 
-<!-- CSS Styling -->
 <style>
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    grid-template-rows: auto;
-    gap: 15px;
-    padding: 20px;
+  .Moments .gallery-container {
+  width: 100%;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.Moments .swiper-slide {
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 80% !important;
+  max-height: 500px;
+}
+
+/* Center image effect */
+.Moments .swiper-slide-active img {
+  transform: scale(1);
+  filter: none; /* Full color */
+  opacity: 1;
+}
+
+/* Side images effect */
+.Moments .swiper-slide-prev img,
+.Moments .swiper-slide-next img {
+  transform: scale(0.94);
+  opacity: 1;
+}
+
+.Moments .swiper-slide img {
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+@media (max-width: 768px) {
+  .Moments .swiper-container {
+    overflow: hidden; /* Ensures no unwanted scroll */
+  }
+ .Moments .container{
+  padding: 0;
+ }
+
+  .Moments .swiper-slide {
+    max-width: 80% !important; /* Center image takes 80% */
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-
-
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
+  .Moments .swiper-slide-active {
+    transform: scale(1);
+    opacity: 1;
   }
 
-  .gallery-item img {
+  /* Left & Right images – only 10% visible */
+  .Moments .swiper-slide-prev,
+  .Moments .swiper-slide-next {
+    width: 100% !important; /* Only 10% visible */
+    opacity: 0.5; /* Make them slightly faded */
+    pointer-events: none; /* No click */
+  }
+
+  .Moments .swiper-slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
     border-radius: 20px;
-    
+    max-height: 400px;
+    transition: all 0.3s ease-in-out;
   }
+}
 
-  @media (max-width:600px) {
-    .gallery-grid {
-      
-      gap: 10px;
-      padding: 0px;
-    }
-    .gallery-item {
-      border-radius: 10px;
-    }
-  
-    .gallery-item img {
-      border-radius: 10px;
-    }
-  }
 
-  /* Asymmetrical Layout */
-  .gallery-item:nth-child(1) { grid-row: span 3; max-height: 600px; }
-  .gallery-item:nth-child(2) { grid-column: span 1; max-height: 290px;}
-  .gallery-item:nth-child(3) { grid-row: span 3;max-height: 600px; }
-  .gallery-item:nth-child(4) { grid-row: span 2; max-height: 290px; }
- 
+
 </style>
 
-<!-- JavaScript to Adjust Layout Dynamically -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    let items = document.querySelectorAll(".gallery-item");
+    const swiper = new Swiper(".gallery-container", {
+      loop: true,
+      slidesPerView: "1",
+      centeredSlides: true,
+      spaceBetween: 0,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.25, // Center image takes 80%, side images take 10% each
+          spaceBetween: 10, // Push side images slightly out
+        },
+        768: {
+          slidesPerView: "3", // Original behavior for larger screens
+          spaceBetween: 0,
+        },
+    },
     
-    if (items.length >= 4) {
-      items[0].style.gridRow = "span 3";
-      items[1].style.gridColumn = "span 1";
-      items[2].style.gridRow = "span 3";
-      items[3].style.gridRow = "span 2";
-    }
+      on: {
+        slideChange: function () {
+          document.querySelectorAll(".swiper-slide img").forEach(img => {
+            img.style.opacity = "1";
+          });
+  
+          let activeImage = document.querySelector(".swiper-slide-active img");
+          if (activeImage) {
+            activeImage.style.opacity = "1";
+          }
+        },
+      },
+    });
   });
 </script>
+

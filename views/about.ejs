@@ -23,7 +23,7 @@
     </section>
     <section class="pre-vision">
     <div class="pre-conent new-padding-bottom">
-    <div class="container-vision">
+    <div class="container-vision container-about-1">
     <div class="flecobjet new-padding-top">
     <div class="row padd-right new-padding-bottom">
     <div class="col-lg-6 align-self-center">
@@ -31,7 +31,7 @@
     <div class="holder-inner"><img src="assets/images/Ourvision.webp" alt=""></div>
     </div>
     </div>
-    <div class="col-lg-6 align-self-center">
+    <div class="col-lg-6 align-self-center" style="padding-left: 12px;">
     <div class="abou-heding ">
     <span><img src="assets/images/green_leaf.webp" alt=""></span>
     <h2>Our Vision</h2>
@@ -61,7 +61,7 @@
     <div class="holder-inner"><img src="/assets/images/Backedbyexperts.webp" alt=""></div>
     </div>
     </div>
-    <div class="col-lg-6 align-self-center">
+    <div class="col-lg-6 align-self-center" style="padding-left: 12px;">
     <div class="abou-heding">
     <span><img src="assets/images/green_leaf.webp" alt="" /></span>
     <h2>Backed by Experts</h2>
@@ -129,8 +129,7 @@
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
+      
             <div class="box custom-box custom-box1">
                 <a href="#">
                     <div class="cllases1-team">
@@ -148,10 +147,8 @@
                     </div>
                 </a>
             </div>
-        </div>
+        
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
             <div class="box custom-box custom-box1 cltem3">
                 <a href="#">
                     <div class="cllases1-team">
@@ -169,10 +166,9 @@
                     </div>
                 </a>
             </div>
-        </div>
+       
 
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
+       
             <div class="box custom-box custom-box1">
                 <a href="#">
                     <div class="cllases1-team">
@@ -190,41 +186,26 @@
                     </div>
                 </a>
             </div>
-        </div>
+      
 
     </div>
-
-    <!-- Swiper Navigation Buttons -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+<style>
+    .box{
+        max-width: 435px;
+        max-height: 411px;
+        width: 100%;
+        height: 100%;
+    }
+    .pre-team .swiper-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+</style>
     
-    <!-- Swiper Pagination -->
-    <div class="swiper-pagination"></div>
 </div>
 
-<!-- Include Swiper JS and Initialization -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,  // Always show 3 slides
-        spaceBetween: 20,  // Space between slides
-        loop: true,        // Enable infinite looping
-        autoplay: {
-            delay: 2500,   // 2.5 seconds per slide
-            disableOnInteraction: false, // Keep autoplay running even if user interacts
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-</script>
 
     </div>
     </div>

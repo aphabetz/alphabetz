@@ -50,6 +50,40 @@
     background-color: #1f0b45ef;
   
 }
+.gallery-breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 10px 5px; /* Add horizontal padding */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.gallery-breadcrumb::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ensure items don't shrink */
+.breadcrumb-item {
+    flex: 0 0 auto;
+   
+    text-align: center;
+   
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+}
+@media (max-width:768px) {
+    .page-title-content {
+        overflow-x: auto;
+        display: flex;
+        justify-content: flex-start; /* Align to left */
+        padding-left: 0px; /* Prevent cut-off */
+    }
+}
+
 
     .form-switch .switch__slider::before {
         content: "";
@@ -113,7 +147,7 @@
 flex-direction: column;
 align-items: center;">
             <h1>The Memory Nest</h1>
-            <p>A glimpse into the joy, wonder, and pure magic of little lives in bloom.</p>
+            <p style="padding: 12px 5px;">A glimpse into the joy, wonder, and pure magic of little lives in bloom.</p>
         </div>
     </div>
 </section>
@@ -135,7 +169,7 @@ align-items: center;">
                 <div class="page-title-content">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb gallery-breadcrumb" id="galleryTabs" style="justify-content: center;">
-                            <li class="breadcrumb-item active hover1" style="padding: 10px 32px;" data-filter="all">All</li>
+                            <li class="breadcrumb-item active hover1" style="padding: 10px 32px; color:white" data-filter="all">All</li>
                             <% gallery.forEach((album) => { %>
                                 <li class="breadcrumb-item hover1" style="color: white;" data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
                             <% }); %>
@@ -199,14 +233,6 @@ align-items: center;">
                       </div>
                   </div>
 
-                      <!-- Popup Structure -->
-                      <div id="video-popup" class="video-popup" style="display: none;" onclick="closeVideoPopup(event)">
-                        <div class="popup-content" onclick="event.stopPropagation()"> <!-- Prevent click from closing the popup if inside the content -->
-                            <span class="close" onclick="closeVideoPopup()">&times;</span>
-                            <iframe id="video-frame" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    
                     <script>
                         function openVideoPopup(embedUrl) {
                             const popup = document.getElementById('video-popup');
@@ -254,8 +280,30 @@ align-items: center;">
                         border-radius: 50%;
                     
                     }
+                    .video-popup iframe{
+                        width: 916px;
+                        height: 515px;
+                        max-width: 100%;
+                    }
                 
-                   
+                    @media (max-width:800px){
+                        .video-popup iframe{
+                            width: 516px;
+                            height: 315px;
+                        } 
+                    }
+                    @media (max-width:550px){
+                        .video-popup iframe{
+                            width: 400px;
+                            height: 250px;
+                        } 
+                    }
+                    @media (max-width:420px){
+                        .video-popup iframe{
+                            width: 350px;
+                            height: 200px;
+                        } 
+                    }
                         .video-popup {
                             position: fixed;
                             top: 0;
@@ -275,7 +323,7 @@ align-items: center;">
                             
                            /* Prevent clicking on the content from closing the popup */
                         }
-                    
+                       
                         .close {
                             position: absolute;
                             top: 10px;

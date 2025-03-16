@@ -336,8 +336,8 @@ button {
 .hover1::after {
   content: "";
   display: block;
-  width: 250%;
-  height: 250%;
+  width: 270%;
+  height: 270%;
   transform: translate(-50%, -50%);
   position: absolute;
   border-radius: 50%;
@@ -6639,132 +6639,6 @@ color: #E33D5C !important;
 }
 
 
-
-/* #popback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  justify-content: center;
-align-items: center;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: none;
-  z-index: 999;
-} */
-
-#popup-banner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
- display: flex;
- justify-content: center;
-
-  
-  z-index: 1001;
-  max-height: 600px; /* Fixed height for desktop */
-  width: 100%; /* Free width */
-}
-#popup-banner .swiper-slide{
- display: flex;
- justify-content: center;
- }
-
-#popup-banner .swiper-wrapper{
- transform: none !important;
- display: flex;
-}
-
-@media (max-width:800px) {
-  #popup-banner{
-    height: auto;
-width: 90%;
-  }
-  
-}
-
-#popup-content {
-text-align: center;
-font-family: Arial, sans-serif;
-}
-
-
-#popup-banner .swiper-container img {
-width: 100%;
-max-height: 600px;
-height: 100%;
-
-}
-#popup-banner .swiper-container , #popup-banner .swiper-slide {
-width: auto !important;
-height: 100% !important;
-margin-right: 0;
-margin: 10px !important;
-max-height: 600px !important;
-}
-
-#close-popup {
-position: absolute;
-top: 0;
-right: 10%;
-background-color: white;
-cursor: pointer;
-z-index: 1100; 
-}
-
-.ficon{
-  justify-content: flex-end;
-   transform: translate(-9px, -155px);
-}
-
-@media (max-width:748px){
-  .ficon{
-    transform: translate(-9px, -175px);
-  }
-   
-}
-
-
-#desktop-popup-banners{
-display: block;
-overflow: hidden;
-}
-#mobile-popup-banners{
-display: none;
-}
-
-@media (max-width:500px) {
-#desktop-popup-banners{
-display: none;
-}
-#mobile-popup-banners{
-display: block;
-overflow: hidden;
-}
-}
-
-#popup-banner .desktop-popup-banner,
-#popup-banner .mobile-popup-banner {
-margin-top: 20px;
-}
-
-
-/* Popup Backdrop */
-#popback {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
 .hero h1{
   font-weight: 700 !important;

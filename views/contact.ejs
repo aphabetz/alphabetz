@@ -28,8 +28,18 @@
                             name="<%= CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS.email %>">
                         </div>
                         <div class="d-flex w-100">
-                            <input type="number" placeholder="Phone Number" required 
-                            name="<%= CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS.phone %>">
+                            <input type="tel" 
+       placeholder="Phone Number" 
+       required 
+       name="<%= CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS.phone %>"
+       pattern="[0-9]{10}" 
+       title="Please enter a valid 10-digit phone number"
+       maxlength="10"
+       minlength="10"
+       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+
+
+
                             <input type="text" placeholder="address" required autocomplete="off"
                             name="<%= CONTACT_ENQUIRY_DYNAMIC_FIELDS_KEYS.address %>">
                         </div>

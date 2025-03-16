@@ -45,8 +45,15 @@
                                 <input type="text" name="<%= BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS.parentname %>" placeholder="Parent Name *" required>
                             </div>
                             <div class="mb-3">
-                                <input type="tel" name="<%= BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS.phone %>" placeholder="Contact No. *" required>
+                                <input type="tel" 
+                                       name="<%= BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS.phone %>" 
+                                       placeholder="Contact No. *" 
+                                       required 
+                                       pattern="[0-9]{10}" 
+                                       title="Please enter a valid 10-digit phone number"
+                                       maxlength="10">
                             </div>
+                            
                             <div class="mb-3">
                                 <input type="email" name="<%= BOOKING_ENQUIRY_DYNAMIC_FIELDS_KEYS.email %>" placeholder="Email ID">
                             </div>

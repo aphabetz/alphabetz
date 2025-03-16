@@ -137,80 +137,80 @@ document.addEventListener("DOMContentLoaded", function () {
     removePreloader();
   });
 });
-// ====== 1.1 header (aside navigation bar) ======
-if (document.getElementById("mySidenav")) {
-  function open_aside() {
-    "use strict";
-    const sidepanel = document.getElementById("mySidenav");
-    if (sidepanel) {
-      sidepanel.style.left = "0";
-    } else {
-      console.error("Error: Side panel element not found!");
-    }
-  }
-  function close_aside() {
-    "use strict";
-    const sidepanel = document.getElementById("mySidenav");
-    if (sidepanel) {
-      sidepanel.style.left = "-355px";
-    } else {
-      console.error("Error: Side panel element not found!");
-    }
-  }
-  // aside page button
-  let slid = document.getElementsByClassName(".slid-btn");
-  if (slid !== null) {
-    slid.onclick = () => {
-      let dropdwon = document.getElementsByClassName(".slid-drop");
-      dropdwon.classList.toggle("aside-dropdwon");
-    };
-  }
-}
+// // ====== 1.1 header (aside navigation bar) ======
+// if (document.getElementById("mySidenav")) {
+//   function open_aside() {
+//     "use strict";
+//     const sidepanel = document.getElementById("mySidenav");
+//     if (sidepanel) {
+//       sidepanel.style.left = "0";
+//     } else {
+//       console.error("Error: Side panel element not found!");
+//     }
+//   }
+//   function close_aside() {
+//     "use strict";
+//     const sidepanel = document.getElementById("mySidenav");
+//     if (sidepanel) {
+//       sidepanel.style.left = "-355px";
+//     } else {
+//       console.error("Error: Side panel element not found!");
+//     }
+//   }
+//   // aside page button
+//   let slid = document.getElementsByClassName(".slid-btn");
+//   if (slid !== null) {
+//     slid.onclick = () => {
+//       let dropdwon = document.getElementsByClassName(".slid-drop");
+//       dropdwon.classList.toggle("aside-dropdwon");
+//     };
+//   }
+// }
 
 // ====== 1.1 header (dropdown bar) ======
-const dropdowns = document.querySelectorAll(".navbar .dropdown");
-dropdowns.forEach((dropdown) => {
-  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-  dropdownMenu.style.maxHeight = "0";
-  dropdown.addEventListener("mouseenter", () => {
-    dropdownMenu.style.visibility = "visible";
-    dropdownMenu.style.maxHeight = `${dropdownMenu.scrollHeight}px`;
-  });
-  dropdown.addEventListener("mouseleave", () => {
-    dropdownMenu.style.visibility = "hidden";
-    dropdownMenu.style.maxHeight = "0";
-  });
-});
+// const dropdowns = document.querySelectorAll(".navbar .dropdown");
+// dropdowns.forEach((dropdown) => {
+//   const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+//   dropdownMenu.style.maxHeight = "0";
+//   dropdown.addEventListener("mouseenter", () => {
+//     dropdownMenu.style.visibility = "visible";
+//     dropdownMenu.style.maxHeight = `${dropdownMenu.scrollHeight}px`;
+//   });
+//   dropdown.addEventListener("mouseleave", () => {
+//     dropdownMenu.style.visibility = "hidden";
+//     dropdownMenu.style.maxHeight = "0";
+//   });
+// });
 
-// ========== 1.5. Courses Slider  =======
-$(document).ready(function () {
-  if ($(".Courses_Slider").length) {
-    $(".Courses_Slider").slick({
-      arrows: false,
-      dots: true,
-      infinite: true,
-      autoplay: true,
-      autoplaySpeed: 1500,
-      cssEase: "linear",
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-        {
-          breakpoint: 481,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-      ],
-    });
-  }
-});
+// // ========== 1.5. Courses Slider  =======
+// $(document).ready(function () {
+//   if ($(".Courses_Slider").length) {
+//     $(".Courses_Slider").slick({
+//       arrows: false,
+//       dots: true,
+//       infinite: true,
+//       autoplay: true,
+//       autoplaySpeed: 1500,
+//       cssEase: "linear",
+//       slidesToShow: 3,
+//       slidesToScroll: 1,
+//       responsive: [
+//         {
+//           breakpoint: 767,
+//           settings: {
+//             slidesToShow: 2,
+//           },
+//         },
+//         {
+//           breakpoint: 481,
+//           settings: {
+//             slidesToShow: 1,
+//           },
+//         },
+//       ],
+//     });
+//   }
+// });
 
 // ========== 1.9. Testimonial Slider  =======
 $(document).ready(function () {

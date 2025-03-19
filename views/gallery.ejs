@@ -1,35 +1,29 @@
 <%- include('header'), {seoDetails} %>
 <style>
-
-
     .form-switch .switch {
         cursor: pointer;
         position: relative;
         width: 55px;
         height: 30px;
-      }
-      
-      
-     
-      .form-switch .switch input:checked + .switch__slider {
+    }
+    
+    .form-switch .switch input:checked + .switch__slider {
         background-color: #e33d5c;
-      }
-      
-      .form-switch .switch input:checked + .switch__slider::before {
+    }
+    
+    .form-switch .switch input:checked + .switch__slider::before {
         transform: translateX(25px);
         background-color: white;
-      }
-      
-
-
+    }
+    
     .form-switch .switch input {
         z-index: 5;
         position: absolute;
-        
         width: 100%;
         height: 100%;
         opacity: 0;
     }
+    
     .form-switch .switch__slider {
         cursor: pointer;
         position: absolute;
@@ -43,48 +37,44 @@
         transition: .3s;
         border-radius: 30px;
     }
-.breadcrumb-item{
-    cursor: pointer;
-    padding: 12px 20px;
-    border-radius: 24px;
-    background-color: #1f0b45ef;
-  
-}
-.gallery-breadcrumb {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 10px;
-    padding: 10px 5px; /* Add horizontal padding */
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-}
-
-/* Hide scrollbar for WebKit browsers */
-.gallery-breadcrumb::-webkit-scrollbar {
-    display: none;
-}
-
-/* Ensure items don't shrink */
-.breadcrumb-item {
-    flex: 0 0 auto;
-   
-    text-align: center;
-   
-    color: white;
-    font-size: 14px;
-    white-space: nowrap;
-}
-@media (max-width:768px) {
-    .page-title-content {
-        overflow-x: auto;
-        display: flex;
-        justify-content: flex-start; /* Align to left */
-        padding-left: 0px; /* Prevent cut-off */
+    
+    .breadcrumb-item {
+        cursor: pointer;
+        padding: 12px 20px;
+        border-radius: 24px;
     }
-}
-
-
+    
+    .gallery-breadcrumb {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px;
+        padding: 10px 5px;
+        scrollbar-width: none;
+    }
+    
+    .gallery-breadcrumb::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .breadcrumb-item {
+        flex: 0 0 auto;
+        text-align: center;
+        color: white;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    @media (max-width:768px) {
+        .page-title-content {
+            overflow-x: auto;
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 0px;
+        }
+    }
+    
     .form-switch .switch__slider::before {
         content: "";
         position: absolute;
@@ -97,44 +87,46 @@
         box-shadow: 0px 10px 40px 0px #0000000D;
         transition: .3s;
     }
-
-
+    
     .breadcrumb-item.active {
         color: white;
     }
-
-.gallery-container{
-    column-count: 3;
-    gap:20px
-}
-.gallery-thumb{
-    margin-bottom: 20px ;
-}
+    
+    .gallery-container {
+        column-count: 3;
+        gap: 20px;
+    }
+    
+    .gallery-thumb {
+        margin-bottom: 20px;
+    }
+    
     @media (max-width:992px) {
-        .gallery-container{
+        .gallery-container {
             max-width: 800px;
             margin: 2px auto;
             column-count: 2;
-            gap:30px
+            gap: 30px;
         }
     }
+    
     @media (max-width:700px) {
-        .gallery-container{
+        .gallery-container {
             max-width: 500px;
             margin: 2px auto;
             column-count: 1;
-            gap:30px
+            gap: 30px;
         }
     }
-
+    
     @media (max-width:500px) {
-        .gallery-container{
+        .gallery-container {
             max-width: 500px;
             margin: 2px auto;
             column-count: 1;
-            gap:0px
+            gap: 0px;
         }
-        .gallery-thumb{
+        .gallery-thumb {
             margin-bottom: 14px !important;
         }
     }
@@ -142,36 +134,26 @@
 
 <section class="Subpage_Hero">
     <div class="container">
-        <div  data-aos="fade-up" style="
-  display: flex;
-flex-direction: column;
-align-items: center;">
+        <div data-aos="fade-up" style="display: flex; flex-direction: column; align-items: center;">
             <h1>The Memory Nest</h1>
             <p style="padding: 12px 5px;">A glimpse into the joy, wonder, and pure magic of little lives in bloom.</p>
         </div>
     </div>
 </section>
 
-<!-- 
-<div class="form-switch  d-flex items-center" style="justify-content: center; display:flex; align-items:center; margin:50px 0 20px 0; padding-left:0;  position:relative">
-    <div class="text-18 lh-1 text-dark-1 mr-10" style="margin-right: 10px;">Images</div>
-    <div class="switch">
-        <input type="checkbox" id="mediaSwitch">
-        <span class="switch__slider"></span>
-    </div>
-    <div class="text-18 lh-1 text-dark-1 ml-10" style="margin-left: 10px;">Videos</div>
-   </div> -->
-
-   <div class="page-title-area bg_cover mb-30 ">
+<div class="page-title-area bg_cover mb-30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-title-content">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb gallery-breadcrumb" id="galleryTabs" style="justify-content: center;">
-                            <li class="breadcrumb-item active hover1" style="padding: 10px 32px; color:white" data-filter="all">All</li>
+                            <li class="breadcrumb-item active hover1" style="padding: 10px 32px;" data-filter="all">All</li>
+                            <li class="breadcrumb-item hover1" data-filter="videos">Videos</li>
                             <% gallery.forEach((album) => { %>
-                                <li class="breadcrumb-item hover1" style="color: white;" data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
+                                <% if (album.mediaDetails.mediaType === "IMAGE") { %>
+                                    <li class="breadcrumb-item hover1" data-filter="<%= album.title.toLowerCase() %>"><%= album.title %></li>
+                                <% } %>
                             <% }); %>
                         </ol>
                     </nav>
@@ -186,174 +168,212 @@ align-items: center;">
         <div class="gallery-itmes">
             <div class="rows">
                 <!-- Gallery Container -->
-                <div class="gallery-container state-gallery" >
+                <div class="gallery-container state-gallery">
                     <% gallery.slice().reverse().forEach((album) => { %>
                         <% if (album.mediaDetails.mediaType === "IMAGE" && album.mediaDetails.images.length > 0) { %>
-                          <% album.mediaDetails.images.slice().reverse().forEach((image) => { %>
-                            <div class="gallery-thumb image-item" data-title="<%= album.title.toLowerCase() %>" >
-                                <a class="image-popup" href="<%= process.env.S3_BASE_URL + image %>">
-                              <img src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" 
-                                   alt="<%= album.title %>" style="width: 100%;  border-radius:16px" />
-                              </a>
-                            </div>
-                          <% }); %>
+                            <% album.mediaDetails.images.slice().reverse().forEach((image) => { %>
+                                <div class="gallery-thumb image-item" data-title="<%= album.title.toLowerCase() %>">
+                                    <a class="image-popup" href="<%= process.env.S3_BASE_URL + image %>">
+                                        <img src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" 
+                                             alt="<%= album.title %>" style="width: 100%; border-radius:16px" />
+                                    </a>
+                                </div>
+                            <% }); %>
                         <% } %>
-                      
+                        
                         <% if (album.mediaDetails.mediaType === "VIDEO" && album.mediaDetails.videoLink) { 
-                          function convertToEmbedUrl(url) {
-                            let videoId = "";
-                            if (url.includes("youtu.be")) {
-                              videoId = url.split("youtu.be/")[1]?.split("?")[0];
-                            } else if (url.includes("youtube.com/watch")) {
-                              videoId = url.split("v=")[1]?.split("&")[0];
+                            function convertToEmbedUrl(url) {
+                                let videoId = "";
+                                if (url.includes("youtu.be")) {
+                                    videoId = url.split("youtu.be/")[1]?.split("?")[0];
+                                } else if (url.includes("youtube.com/watch")) {
+                                    videoId = url.split("v=")[1]?.split("&")[0];
+                                }
+                                return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
                             }
-                            return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
-                          }
-                          const embedUrl = convertToEmbedUrl(album.mediaDetails.videoLink);
+                            const embedUrl = convertToEmbedUrl(album.mediaDetails.videoLink);
                         %>
-                          <% if (embedUrl) { %>
-                            <div class="gallery-thumb video-item" style="margin-bottom: 30px; " data-title="<%= album.title.toLowerCase() %>" onclick="openVideoPopup('<%= embedUrl %>')">
-                              <div class="thumbnail-container">
-                                <img src="https://img.youtube.com/vi/<%= embedUrl.split('/').pop() %>/0.jpg" 
-                                     alt="<%= album.title %>" class="thumbnail-image" style="border-radius:25px" />
-                                <div class="play-button">&#9654;</div> 
-                              </div>
-                            </div>
-                          <% } else { %>
-                            <p>Invalid YouTube URL provided.</p>
-                          <% } %>
+                            <% if (embedUrl) { %>
+                                <div class="gallery-thumb video-item" style="margin-bottom: 20px; display:flex; flex-direction:column" data-title="videos" onclick="openVideoPopup('<%= embedUrl %>')">
+                                    <div class="thumbnail-container">
+                                        <img src="https://img.youtube.com/vi/<%= embedUrl.split('/').pop() %>/0.jpg" 
+                                             alt="<%= album.title %>" class="thumbnail-image" style="border-radius:25px" />
+                                        <div class="play-button">▶</div>
+                                    </div>
+                                    <h3 class="title video-title"><%= album.title %></h3>
+                                </div>
+                            <% } else { %>
+                                <p>Invalid YouTube URL provided.</p>
+                            <% } %>
                         <% } %>
 
-                      
-                    <!-- Popup Structure -->
-                    <div id="video-popup" class="video-popup" style="display: none;" onclick="closeVideoPopup(event)">
-                      <div class="popup-content" onclick="event.stopPropagation()"> <!-- Prevent click from closing the popup if inside the content -->
-                          <span class="close" onclick="closeVideoPopup()">&times;</span>
-                          <iframe id="video-frame" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      </div>
-                  </div>
+                        <!-- Popup Structure -->
+                        <div id="video-popup" class="video-popup" style="display: none;" onclick="closeVideoPopup(event)">
+                            <div class="popup-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeVideoPopup()">×</span>
+                                <iframe id="video-frame" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
 
-                    <script>
-                        function openVideoPopup(embedUrl) {
-                            const popup = document.getElementById('video-popup');
-                            const iframe = document.getElementById('video-frame');
-                            iframe.src = embedUrl; // Set the video URL to the iframe
-                            popup.style.display = 'flex'; // Show the popup
-                        }
-                    
-                        function closeVideoPopup(event = null) {
-                            const popup = document.getElementById('video-popup');
-                            const iframe = document.getElementById('video-frame');
-                            iframe.src = ''; // Clear the video URL to stop the video when closed
-                            popup.style.display = 'none'; // Hide the popup
-                    
-                            if (event) {
-                                event.stopPropagation(); // Prevent event propagation if the overlay is clicked
+                        <script>
+                            function openVideoPopup(embedUrl) {
+                                const popup = document.getElementById('video-popup');
+                                const iframe = document.getElementById('video-frame');
+                                iframe.src = embedUrl;
+                                popup.style.display = 'flex';
                             }
-                        }
-                    </script>
-                    
-                    <style>
-                      .thumbnail-container {
-                        position: relative;
-                        width: 100%;
-                  
-                    }
-                
-                  
-                    /* Styling for the thumbnail image */
-                    .thumbnail-image {
-                        width: 100%;
-                        height: 230px !important;
-                        object-fit: cover;
-                        display: block;
-                    }
-                
-                    /* Styling for the play button */
-                    .play-button {
-                        position: absolute;
-                        display: flex;
-                       justify-content: center;
-                        font-size: 50px;
-                        color: rgba(255, 255, 255, 0.963);
-                        padding: 10px;
-                        border-radius: 50%;
-                        cursor: pointer;
-                        top: 34%;
-                        left: 42%;
-                    
-                    }
-                    .video-popup iframe{
-                        width: 916px;
-                        height: 515px;
-                        max-width: 100%;
-                    }
-                
-                    @media (max-width:800px){
-                        .video-popup iframe{
-                            width: 516px;
-                            height: 315px;
-                        } 
-                    }
-                    @media (max-width:550px){
-                        .video-popup iframe{
-                            width: 400px;
-                            height: 250px;
-                        } 
-                    }
-                    @media (max-width:420px){
-                        .video-popup iframe{
-                            width: 350px;
-                            height: 200px;
-                        } 
-                    }
-                        .video-popup {
-                            position: fixed;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background: rgba(0, 0, 0, 0.8);
-                            display: none;
-                            justify-content: center;
-                            align-items: center;
-                            z-index: 1000;
-                            /* Make the entire overlay clickable */
-                        }
-                    
-                        .popup-content {
-                            position: relative;
+                        
+                            function closeVideoPopup(event = null) {
+                                const popup = document.getElementById('video-popup');
+                                const iframe = document.getElementById('video-frame');
+                                iframe.src = '';
+                                popup.style.display = 'none';
+                                if (event) {
+                                    event.stopPropagation();
+                                }
+                            }
+                        </script>
+                        
+                        <style>
+                            .thumbnail-container {
+                                position: relative;
+                                width: 100%;
+                            }
                             
-                           /* Prevent clicking on the content from closing the popup */
-                        }
-                       
-                        .close {
-                            position: absolute;
-                            top: 10px;
-                            right: 10px;
-                            font-size: 30px;
-                           
-                        }
-                    </style>
-                    
+                            .thumbnail-image {
+                                width: 100%;
+                                height: 230px !important;
+                                object-fit: cover;
+                                display: block;
+                            }
+                            
+                            .play-button {
+                                position: absolute;
+                                display: flex;
+                                justify-content: center;
+                                align-self: center;
+                                font-size: 50px;
+                                color: white;
+                                border: 2px solid white;
+                                height: 70px;
+                                width: 70px;
+                                padding: 10px;
+                                padding-top: 8px;
+                                padding-left: 18px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                top: 34%;
+                                left: 42%;
+                            }
+                            
+                            h3.video-title {
+                                font-family: "Paytone One", sans-serif;
+                                font-size: 20px !important;
+                                text-align: left !important;
+                                color: #1f0b45;
+                                margin-top: 10px;
+                            }
+                            
+                            .video-popup iframe {
+                                width: 916px;
+                                height: 515px;
+                                max-width: 100%;
+                            }
+                            
+                            @media (max-width:800px) {
+                                .video-popup iframe {
+                                    width: 516px;
+                                    height: 315px;
+                                }
+                            }
+                            
+                            @media (max-width:550px) {
+                                .video-popup iframe {
+                                    width: 400px;
+                                    height: 250px;
+                                }
+                            }
+                            
+                            @media (max-width:420px) {
+                                .video-popup iframe {
+                                    width: 350px;
+                                    height: 200px;
+                                }
+                            }
+                            
+                            .video-popup {
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0, 0, 0, 0.8);
+                                display: none;
+                                justify-content: center;
+                                align-items: center;
+                                z-index: 1000;
+                            }
+                            
+                            .popup-content {
+                                position: relative;
+                            }
+                            
+                            .close {
+                                position: absolute;
+                                top: 10px;
+                                right: 10px;
+                                font-size: 30px;
+                            }
+                            
+                            .breadcrumb-item.active {
+                                background-color: white;
+                                border: 1px solid #e33d5c;
+                                color: #e33d5c !important;
+                                font-weight: 600;
+                            }
+                            
+                            .breadcrumb-item.active.hover1::before, .breadcrumb-item.active.hover1::after {
+                                content: "";
+                                display: block;
+                                width: 270%;
+                                height: 270%;
+                                transform: translate(-50%, -50%);
+                                position: absolute;
+                                border-radius: 50%;
+                                z-index: -1;
+                                background-color: #ffffff;
+                                transition: 0.4s ease;
+                            }
+                        </style>
                     <% }); %>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const galleryItems = document.querySelectorAll('.gallery-thumb');
         const galleryBreadcrumbs = document.querySelectorAll('#galleryTabs .breadcrumb-item');
+        const videoTitles = document.querySelectorAll('.video-title');
 
         function filterGallery(filter) {
             galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-title') === filter) {
+                const itemTitle = item.getAttribute('data-title');
+                if (filter === 'all') {
+                    item.style.display = 'flex';
+                    // Hide video titles when 'All' is active
+                    if (item.classList.contains('video-item')) {
+                        const title = item.querySelector('.video-title');
+                        if (title) title.style.display = 'none';
+                    }
+                } else if (filter === 'videos' && item.classList.contains('video-item')) {
+                    item.style.display = 'flex';
+                    // Show video titles when 'Videos' is active
+                    const title = item.querySelector('.video-title');
+                    if (title) title.style.display = 'block';
+                } else if (filter !== 'videos' && itemTitle === filter && !item.classList.contains('video-item')) {
                     item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';

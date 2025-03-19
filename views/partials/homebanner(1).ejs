@@ -1,11 +1,11 @@
 <!-- Popup Overlay -->
 <div class="popup-overlay" id="popup-overlay">
   <div class="popup-banner">
-      <button class="popup-close-btn hover1" id="popup-close-btn">&times;</button>
+      <button class="popup-close-btn hover1" id="popup-close-btn">×</button>
 
       <!-- Desktop Swiper -->
       <div class="popup-desktop-banner">
-          <div class="swiper-container popup-desktop-swiper">
+          <div class="swiper popup-desktop-swiper" id="popup-desktop-swiper">
               <div class="swiper-wrapper">
                   <% popupbanners.forEach((slide, index) => { %>
                       <div class="swiper-slide popup-slide">
@@ -13,13 +13,13 @@
                       </div>
                   <% }) %>
               </div>
-              <div class="swiper-pagination popup-pagination"></div>
+              <div class="swiper-pagination popup-pagination-desktop"></div>
           </div>
       </div>
 
       <!-- Mobile Swiper -->
       <div class="popup-mobile-banner">
-          <div class="swiper-container popup-mobile-swiper">
+          <div class="swiper popup-mobile-swiper" id="popup-mobile-swiper">
               <div class="swiper-wrapper">
                   <% popupbanners.forEach((slide, index) => { %>
                       <div class="swiper-slide popup-slide">
@@ -27,7 +27,7 @@
                       </div>
                   <% }) %>
               </div>
-              <div class="swiper-pagination popup-pagination"></div>
+              <div class="swiper-pagination popup-pagination-mobile"></div>
           </div>
       </div>
   </div>
@@ -42,7 +42,7 @@
       width: 100%;
       height: 100vh;
       background: rgba(0, 0, 0, 0.8);
-      display: none; /* Default: Hidden */
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 9999;
@@ -56,9 +56,6 @@
       max-width: 90%;
       height: 600px;
       border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
   }
 
   .popup-close-btn {
@@ -72,9 +69,9 @@
       width: 40px;
       font-size: 30px;
       cursor: pointer;
-      padding: 0px;
+      padding: 0;
       border-radius: 50%;
-      z-index: 1000;
+      z-index: 1001;
   }
 
   .popup-slide {
@@ -91,87 +88,145 @@
       display: block;
   }
 
-  @media (max-width: 768px) {
-    .popup-desktop-swiper {
-      display: none;
-    }
-    .popup-mobile-swiper {
+  .swiper {
+      width: 100%;
+      height: 100%;
+  }
+
+  .popup-desktop-banner {
       display: block;
-    }
-    .popup-banner {
-        max-width: 95%;
-    }
-    .popup-close-btn {
-        top: 12px;
-    }
-    .popup-slide img {
-        height: 100%;
-        max-height: 500px;
-        width: 100%;
-        max-width: 90%;
-    }
+  }
+
+  .popup-mobile-banner {
+      display: none;
+  }
+
+  .swiper-pagination {
+      bottom: 10px !important;
+  }
+
+  @media (max-width: 768px) {
+      .popup-desktop-banner {
+          display: none;
+      }
+      .popup-mobile-banner {
+          display: block;
+      }
+      .popup-banner {
+          max-width: 95%;
+      }
+      .popup-close-btn {
+          top: 12px;
+      }
+      .popup-slide img {
+          height: 100%;
+          max-height: 500px;
+          width: 100%;
+          max-width: 90%;
+      }
   }
 </style>
 
+<!-- Include Swiper JS and CSS (place this in your <head>) -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <!-- Scripts -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      function initializeSwiper(selector) {
-          return new Swiper(selector, {
-              slidesPerView: 1,
-              loop: true,
-              autoplay: {
-                  delay: 3000,
-                  disableOnInteraction: false,
-              },
-              pagination: {
-                  el: ".popup-pagination",
-                  clickable: true,
-              },
-              observer: true,
-              observeParents: true,
-          });
-      }
+document.addEventListener("DOMContentLoaded", function () {
+  // Verify Swiper is loaded
+  if (typeof Swiper === 'undefined') {
+      console.error('Swiper library not loaded! Check CDN or file path.');
+      return;
+  }
 
-      var popupDesktopSwiper = initializeSwiper(".popup-desktop-swiper");
-      var popupMobileSwiper = initializeSwiper(".popup-mobile-swiper");
+  const popupOverlay = document.getElementById("popup-overlay");
+  const popupCloseBtn = document.getElementById("popup-close-btn");
 
-      const popupOverlay = document.getElementById("popup-overlay");
-      const popupCloseBtn = document.getElementById("popup-close-btn");
+  // Pass popupbanners length from server to client
+  const popupBannersCount = <%= popupbanners.length %>;
 
-      // Check session storage before showing popup
-      if (!sessionStorage.getItem("popupClosed")) {
-          setTimeout(() => {
-              popupOverlay.style.display = "flex";
-              setTimeout(() => {
-                  popupOverlay.style.opacity = "1";
-              }, 50);
-          }, 500); // Small delay before showing popup
-      }
-
-      // Close Popup
-      function closePopup() {
-          popupOverlay.style.opacity = "0";
-          setTimeout(() => {
-              popupOverlay.style.display = "none";
-          }, 300);
-          sessionStorage.setItem("popupClosed", "true"); // Save in session storage
-      }
-
-      popupCloseBtn.addEventListener("click", closePopup);
-
-      // Close popup when clicking outside the banner
-      popupOverlay.addEventListener("click", function (e) {
-          if (e.target === popupOverlay) {
-              closePopup();
+  // Initialize Swiper instances
+  let desktopSwiper, mobileSwiper;
+  function initSwipers() {
+      desktopSwiper = new Swiper('#popup-desktop-swiper', {
+          slidesPerView: 1,
+          loop: true,
+          autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+          },
+          pagination: {
+              el: '.popup-pagination-desktop',
+              clickable: true,
+          },
+          on: {
+              init: () => console.log('Desktop Swiper initialized'),
+              slideChange: () => console.log('Desktop Swiper slide changed')
           }
       });
+
+      mobileSwiper = new Swiper('#popup-mobile-swiper', {
+          slidesPerView: 1,
+          loop: true,
+          autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+          },
+          pagination: {
+              el: '.popup-pagination-mobile',
+              clickable: true,
+          },
+          on: {
+              init: () => console.log('Mobile Swiper initialized'),
+              slideChange: () => console.log('Mobile Swiper slide changed')
+          }
+      });
+  }
+
+  // Show popup
+  function showPopup() {
+      console.log('Showing popup');
+      popupOverlay.style.display = "flex";
+      setTimeout(() => {
+          popupOverlay.style.opacity = "1";
+          if (!desktopSwiper || !mobileSwiper) {
+              initSwipers();
+          } else {
+              desktopSwiper.update();
+              mobileSwiper.update();
+          }
+      }, 100);
+  }
+
+  // Close popup
+  function closePopup() {
+      console.log('Closing popup');
+      popupOverlay.style.opacity = "0";
+      setTimeout(() => {
+          popupOverlay.style.display = "none";
+          if (desktopSwiper) desktopSwiper.autoplay.stop();
+          if (mobileSwiper) mobileSwiper.autoplay.stop();
+      }, 300);
+      sessionStorage.setItem("popupClosed", "true");
+  }
+
+  // Check if popup should show
+  if (!sessionStorage.getItem("popupClosed") && popupBannersCount > 0) {
+      setTimeout(showPopup, 500);
+  } else {
+      console.log('No popup shown: Either already closed or no banners available');
+  }
+
+  // Event listeners
+  popupCloseBtn.addEventListener("click", closePopup);
+  popupOverlay.addEventListener("click", function (e) {
+      if (e.target === popupOverlay) {
+          closePopup();
+      }
   });
+});
 </script>
-
-
-
-
 <!--    
       
     <% banners.forEach(slide => { %>

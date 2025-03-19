@@ -31,8 +31,8 @@ app.get('/', async (req, res) => {
     const popupbanners = await getHomepopupBanner();
    const latestImages = await getLatestGalleryImages();
    const seoDetails = {
-    title: "Alphabetz International Preschool Dongargarh | Quality Early Education",
-    metaDescription: "Alphabetz International Preschool in Dongargarh offers a nurturing environment for early childhood education. Enroll your child for a fun and interactive learning experience.",
+    title: "Alphabetz Preschool Dongargarh | Quality Early Education",
+    metaDescription: "Alphabetz  Preschool in Dongargarh offers a nurturing environment for early childhood education. Enroll your child for a fun and interactive learning experience.",
     metaImage: `${baseUrl}/${metaLogoPath}`,
     keywords: "Alphabetz Preschool, Preschool in Dongargarh, Best preschool in Chhattisgarh, Early childhood education, Play school in Dongargarh, Kindergarten in Dongargarh, Kids learning center",
     canonical: `${baseUrl}`,
@@ -48,7 +48,7 @@ app.get('/about', async (req, res) => {
     const baseUrl = req.protocol + '://' + req.get('Host');
     const seoDetails = {
         title: "About Alphabetz Preschool Dongargarh | Nurturing Early Learning",
-        metaDescription: "Learn about Alphabetz International Preschool in Dongargarh, our vision, mission, and commitment to providing high-quality early childhood education in a safe and engaging environment.",
+        metaDescription: "Learn about Alphabetz  Preschool in Dongargarh, our vision, mission, and commitment to providing high-quality early childhood education in a safe and engaging environment.",
         metaImage: `${baseUrl}/${metaLogoPath}`,
         keywords: "About Alphabetz Preschool, Preschool in Dongargarh, Early childhood education, Play school mission, Kindergarten philosophy, Best preschool in Chhattisgarh",
         canonical: `${baseUrl}/about`,

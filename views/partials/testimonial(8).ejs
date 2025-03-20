@@ -12,14 +12,14 @@
           <% if (album.mediaDetails.mediaType === "IMAGE" && album.mediaDetails.images.length > 0) { %>
             <% album.mediaDetails.images.slice().reverse().forEach((image, index) => { %>
               <div class="swiper-slide slide-images">
-                <a class="image-popup" href="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>">
+                <div class="popup-trigger" data-type="image" data-src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" >
                   <img 
                     src="https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/<%= image %>" 
                     alt="Image"
                     class="gallery-image"
                     data-index="<%= index %>"
                   />
-                </a>
+                </div>
               </div>
             <% }); %>
           <% } %>

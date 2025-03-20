@@ -60,7 +60,7 @@
         padding-left: 25px;
     }
     .Reviews .swiper-pagination{
-      bottom:50px
+      bottom:50px !important;
     }
     .swiper-pagination-bullet-active{
       background:#e33d5c;
@@ -74,7 +74,7 @@
             padding-left: 0px;
         }
         .Reviews .swiper-pagination{
-          bottom:20px
+          bottom:20px !important;
         }
     }
 </style>
@@ -197,22 +197,24 @@
     }
 
     /* Close Button Outside */
-    .close-popup {
+    #reviewPopup .close-popup {
         position: absolute;
-        top: 15px;
+        top: 20px;
         right: 20px;
+        height: 40px;
+        width: 40px;
+        padding: 0;
         font-size: 24px;
         cursor: pointer;
         background: none;
         border: none;
-        color: #e41081;
+        background-color: #76767691;
+        color: white;
         font-weight: bold;
         z-index: 1001;
     }
 
-    .close-popup:hover {
-        color: #b30a65;
-    }
+    
 
     .testimonial-text {
         color: #323232;

@@ -3446,14 +3446,14 @@ video {
 }
 .inner-cllase-bg-team {
   border-radius: 15px;
-  transform: rotate(-8deg);
-  width: 330px;
-  height: 290px;
+  /* transform: rotate(-8deg); */
+  width: 100%;
+  height: 100%;
 }
 .inner-cllase-bg-team img {
   border-radius: 15px;
   width: 100%;
-  height: 320px;
+  height: 100%;
 }
 .inner-cllase-bg {
   border-radius: 15px;
@@ -3487,9 +3487,25 @@ video {
 .dreefnc {
   width: 100%;
 }
+
 .imginner-crd-1 {
   width: 90%;
   float: right;
+  margin-top: -40px;
+  margin-right: -15px;
+}
+.imgcard1{
+  margin-top: -55px;
+}
+.imginner-crd-1:hover {
+  scale: 1.1;
+}
+
+@media (max-width:500px) {
+  .imginner-crd-1 {
+  margin-top: -0;
+  margin-bottom: -20px;
+  }
 }
 .dreefnc img {
   width: 100%;
@@ -3900,6 +3916,8 @@ video {
 }
 .newtextline {
   padding: 25px 10px 0 10px;
+  position: relative;
+  z-index: 999;
 }
 .newtextline p {
   color: #fff;

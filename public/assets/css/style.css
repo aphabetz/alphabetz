@@ -3501,9 +3501,9 @@ video {
   scale: 1.1;
 }
 .fa-heart{
-  color: #e80000;
+  color: #ffffff;
   margin: 0  2px;
-  font-size: 18px;
+ 
 }
 
 @media (max-width:500px) {

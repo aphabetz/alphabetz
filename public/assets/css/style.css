@@ -3500,6 +3500,11 @@ video {
 .imginner-crd-1:hover {
   scale: 1.1;
 }
+.fa-heart{
+  color: #e80000;
+  margin: 0  2px;
+  font-size: 18px;
+}
 
 @media (max-width:500px) {
   .imginner-crd-1 {

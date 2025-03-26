@@ -261,6 +261,23 @@
     
         // Close Popup
         function closePopupFunc() {
+            // Stop video playback when closing
+            if (popupVideo.style.display === 'block') {
+                // For iframe videos (like YouTube)
+                if (popupVideo.tagName === 'IFRAME') {
+                    const videoSrc = popupVideo.src;
+                    popupVideo.src = ''; // This stops the video
+                    setTimeout(() => {
+                        popupVideo.src = videoSrc; // Reset src for next time
+                    }, 100);
+                }
+                // For HTML5 video elements
+                else if (popupVideo.tagName === 'VIDEO') {
+                    popupVideo.pause();
+                    popupVideo.currentTime = 0;
+                }
+            }
+            
             popup.classList.remove('open');
             popupImage.style.display = 'none';
             popupVideo.style.display = 'none';
@@ -278,7 +295,16 @@
                 downloadButton.href = media.src;
                 downloadButton.style.display = 'flex';
             } else if (media.type === 'video') {
-                popupVideo.src = media.src;
+                // For iframe videos, we need to reset the src to ensure proper loading
+                if (popupVideo.tagName === 'IFRAME') {
+                    popupVideo.src = media.src;
+                } 
+                // For HTML5 video elements
+                else if (popupVideo.tagName === 'VIDEO') {
+                    popupVideo.src = media.src;
+                    popupVideo.load(); // Ensure the video is ready to play
+                }
+                
                 popupVideo.style.display = 'block';
                 popupImage.style.display = 'none';
     
@@ -292,12 +318,26 @@
     
         // Next Media
         function nextMedia() {
+            // Stop current video if playing
+            if (popupVideo.style.display === 'block') {
+                if (popupVideo.tagName === 'VIDEO') {
+                    popupVideo.pause();
+                }
+            }
+            
             currentIndex = (currentIndex + 1) % mediaItems.length;
             updateMediaDisplay();
         }
     
         // Previous Media
         function prevMedia() {
+            // Stop current video if playing
+            if (popupVideo.style.display === 'block') {
+                if (popupVideo.tagName === 'VIDEO') {
+                    popupVideo.pause();
+                }
+            }
+            
             currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
             updateMediaDisplay();
         }

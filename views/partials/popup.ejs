@@ -4,22 +4,16 @@
         <!-- Close Button -->
         <span class="close-popup">&times;</span>
 
-
-        <a class="download-button" download style="display: none; opacity:0">
-            <span>&#10515;</span> 
-        </a>
-
-        <!-- Data Count -->
-       
-<div class="inner-popup-content">
-        <!-- Media Container (Image or Video) -->
-        <div class="media-container">
-            <img src="" alt="" class="popup-image" style="display: none;">
-            <iframe src="" frameborder="0" allowfullscreen class="popup-video" style="display: none;"></iframe>
+        <div class="inner-popup-content">
+            <!-- Media Container (Image or Video) -->
+            <div class="media-container">
+                <img src="" alt="" class="popup-image" style="display: none;">
+                <iframe src="" frameborder="0" allowfullscreen class="popup-video" style="display: none;"></iframe>
+            </div>
+            <div class="data-count">
+                <span class="current-index">1</span> of <span class="total-count">n</span>
+            </div>
         </div>
-        <div class="data-count">
-            <span class="current-index">1</span> of <span class="total-count">n</span>
-        </div></div>
         <!-- Navigation Buttons -->
         <button class="nav-button prev-button">&#10094;</button>
         <button class="nav-button next-button">&#10095;</button>
@@ -47,9 +41,7 @@
         display: flex;
     }
 
-
     .inner-popup-content{
-        
         border-radius: 10px;
         overflow: hidden;
         text-align: center;
@@ -105,36 +97,11 @@
         z-index: 1001;
     }
 
-    /* Download Button */
-    .download-button {
-        position: absolute;
-        top: 10px;
-        right: 60px; /* Adjust based on close button position */
-        font-size: 24px;
-        color: #fff;
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1001;
-        text-decoration: none;
-    }
-
-    .download-button:hover {
-        color: white;
-    }
-
     /* Data Count */
     .data-count {
-       
         font-size: 14px;
         color: #fff;
         text-align: right;
-       
         padding: 8px 0;
         border-radius: 20px;
         z-index: 1001;
@@ -145,7 +112,6 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-      
         border: none;
         font-size: 22px;
         cursor: pointer;
@@ -159,7 +125,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-       
         z-index: 1001;
     }
 
@@ -184,11 +149,10 @@
         }
     
         .inner-popup-content{
-            display: flex
-;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         /* Media Container */
         .media-container {
@@ -211,7 +175,6 @@
             object-fit: cover;
             border: none;
         }
-    
     }
 </style>
 <script>
@@ -223,7 +186,6 @@
         const popupVideo = document.querySelector('.popup-video');
         const prevButton = document.querySelector('.prev-button');
         const nextButton = document.querySelector('.next-button');
-        const downloadButton = document.querySelector('.download-button');
         const currentIndexDisplay = document.querySelector('.current-index');
         const totalCountDisplay = document.querySelector('.total-count');
     
@@ -290,10 +252,6 @@
                 popupImage.src = media.src;
                 popupImage.style.display = 'block';
                 popupVideo.style.display = 'none';
-    
-                // Show Download Button for Images
-                downloadButton.href = media.src;
-                downloadButton.style.display = 'flex';
             } else if (media.type === 'video') {
                 // For iframe videos, we need to reset the src to ensure proper loading
                 if (popupVideo.tagName === 'IFRAME') {
@@ -307,9 +265,6 @@
                 
                 popupVideo.style.display = 'block';
                 popupImage.style.display = 'none';
-    
-                // Hide Download Button for Videos
-                downloadButton.style.display = 'none';
             }
     
             // Update Data Count
